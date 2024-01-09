@@ -1,0 +1,17 @@
+C:\Users\magic\source\repos\WinFormsWithNamesPipe\WinFormsWithNamesPipe\bin\Release\net8.0-windows\WinFormsWithNamesPipe.exe
+C:\Users\magic\source\repos\WinFormsWithNamesPipe\WinFormsWithNamesPipe\bin\Release\net8.0-windows\WinFormsWithNamesPipe.deps.json
+C:\Users\magic\source\repos\WinFormsWithNamesPipe\WinFormsWithNamesPipe\bin\Release\net8.0-windows\WinFormsWithNamesPipe.runtimeconfig.json
+C:\Users\magic\source\repos\WinFormsWithNamesPipe\WinFormsWithNamesPipe\bin\Release\net8.0-windows\WinFormsWithNamesPipe.dll
+C:\Users\magic\source\repos\WinFormsWithNamesPipe\WinFormsWithNamesPipe\bin\Release\net8.0-windows\WinFormsWithNamesPipe.pdb
+C:\Users\magic\source\repos\WinFormsWithNamesPipe\WinFormsWithNamesPipe\obj\Release\net8.0-windows\WinFormsWithNamesPipe.Form1.resources
+C:\Users\magic\source\repos\WinFormsWithNamesPipe\WinFormsWithNamesPipe\obj\Release\net8.0-windows\WinFormsWithNamesPipe.Properties.Resources.resources
+C:\Users\magic\source\repos\WinFormsWithNamesPipe\WinFormsWithNamesPipe\obj\Release\net8.0-windows\WinFormsWithNamesPipe.csproj.GenerateResource.cache
+C:\Users\magic\source\repos\WinFormsWithNamesPipe\WinFormsWithNamesPipe\obj\Release\net8.0-windows\WinFormsWithNamesPipe.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\magic\source\repos\WinFormsWithNamesPipe\WinFormsWithNamesPipe\obj\Release\net8.0-windows\WinFormsWithNamesPipe.AssemblyInfoInputs.cache
+C:\Users\magic\source\repos\WinFormsWithNamesPipe\WinFormsWithNamesPipe\obj\Release\net8.0-windows\WinFormsWithNamesPipe.AssemblyInfo.cs
+C:\Users\magic\source\repos\WinFormsWithNamesPipe\WinFormsWithNamesPipe\obj\Release\net8.0-windows\WinFormsWithNamesPipe.csproj.CoreCompileInputs.cache
+C:\Users\magic\source\repos\WinFormsWithNamesPipe\WinFormsWithNamesPipe\obj\Release\net8.0-windows\WinFormsWithNamesPipe.dll
+C:\Users\magic\source\repos\WinFormsWithNamesPipe\WinFormsWithNamesPipe\obj\Release\net8.0-windows\refint\WinFormsWithNamesPipe.dll
+C:\Users\magic\source\repos\WinFormsWithNamesPipe\WinFormsWithNamesPipe\obj\Release\net8.0-windows\WinFormsWithNamesPipe.pdb
+C:\Users\magic\source\repos\WinFormsWithNamesPipe\WinFormsWithNamesPipe\obj\Release\net8.0-windows\WinFormsWithNamesPipe.genruntimeconfig.cache
+C:\Users\magic\source\repos\WinFormsWithNamesPipe\WinFormsWithNamesPipe\obj\Release\net8.0-windows\ref\WinFormsWithNamesPipe.dll
