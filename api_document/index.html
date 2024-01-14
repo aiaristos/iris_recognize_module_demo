@@ -10,7 +10,7 @@
       
       
       
-        <link rel="next" href="python_api/index.html">
+        <link rel="next" href="python_api.html">
       
       
       <link rel="icon" href="assets/images/favicon.png">
@@ -78,7 +78,7 @@
 
 <header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="./index.html" title="嶺東介接API" class="md-header__button md-logo" aria-label="嶺東介接API" data-md-component="logo">
+    <a href="index.html" title="嶺東介接API" class="md-header__button md-logo" aria-label="嶺東介接API" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
@@ -173,7 +173,7 @@
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="." title="嶺東介接API" class="md-nav__button md-logo" aria-label="嶺東介接API" data-md-component="logo">
+    <a href="index.html" title="嶺東介接API" class="md-nav__button md-logo" aria-label="嶺東介接API" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
@@ -200,7 +200,7 @@
         
       
       
-      <a href="./index.html" class="md-nav__link md-nav__link--active">
+      <a href="index.html" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -221,7 +221,7 @@
   
   
     <li class="md-nav__item">
-      <a href="python_api/index.html" class="md-nav__link">
+      <a href="python_api.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -241,7 +241,7 @@
   
   
     <li class="md-nav__item">
-      <a href="response_message/index.html" class="md-nav__link">
+      <a href="response_message.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -261,7 +261,7 @@
   
   
     <li class="md-nav__item">
-      <a href="env/index.html" class="md-nav__link">
+      <a href="env.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -309,8 +309,31 @@
 
 <h1 id="home">Home</h1>
 <p>提供named pipe server 給外部做虹膜建檔/辨識的介接應用程式。</p>
-<p>更多的使用範例，請參見我們的<a href="python_api/index.html">API參考文檔</a>。</p>
-<p>建檔與比對結果的接收請參見<a href="response_message/index.html">建檔/比對回傳格式文檔</a></p>
+<p>更多的使用範例，請參見我們的<a href="python_api.html">API參考文檔</a>。</p>
+<p>建檔與比對結果的接收請參見<a href="response_message.html">建檔/比對回傳格式文檔</a></p>
+<h1 id="api">API 變更日誌</h1>
+<h2 id="vbeta20240112-2024-01-12">[v.beta.2024.01.12] - 2024-01-12</h2>
+<h3 id="_1">變更</h3>
+<ul>
+<li>配合嵌入式做出程式內調整<ul>
+<li>為了讓.Net 可以正確獲取python 程式的MainWindowHandle，現已預設<font color="red"><strong>關閉</strong></font>攝影機的自動開啟。
+等到.Net 成功嵌入後再發送<a href="python_api.html#_7">開啟攝影機</a>訊號開啟即可</li>
+<li>配合.Net winForm 可能無法正確render 透明區域的GUI，導致無法如期顯示，已配合修改GUI寫法做出調整。</li>
+</ul>
+</li>
+<li>新增以下API<ul>
+<li><a href="python_api.html#_6">關閉程式</a></li>
+<li><a href="python_api.html#_7">開啟攝影機</a></li>
+<li><a href="python_api.html#_8">關閉攝影機</a></li>
+</ul>
+</li>
+<li>新增以下環境變數<ul>
+<li>在 theme 中 新增了 <code>custom_title_bar</code> 可供選取。此樣式移除所有windows應用程式外部控制框
+僅保留鏡頭畫面。</li>
+<li><code>custom_title_bar</code> 以在此版本更改為預設樣式。</li>
+</ul>
+</li>
+</ul>
 
 
 

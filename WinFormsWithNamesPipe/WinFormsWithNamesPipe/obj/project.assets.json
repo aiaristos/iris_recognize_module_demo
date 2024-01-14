@@ -14,11 +14,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\User\\Downloads\\repos\\WinFormsWithNamesPipe\\WinFormsWithNamesPipe\\WinFormsWithNamesPipe.csproj",
+      "projectUniqueName": "C:\\Users\\User\\Downloads\\repos\\iris_recognize_module_demo\\WinFormsWithNamesPipe\\WinFormsWithNamesPipe\\WinFormsWithNamesPipe.csproj",
       "projectName": "WinFormsWithNamesPipe",
-      "projectPath": "C:\\Users\\User\\Downloads\\repos\\WinFormsWithNamesPipe\\WinFormsWithNamesPipe\\WinFormsWithNamesPipe.csproj",
+      "projectPath": "C:\\Users\\User\\Downloads\\repos\\iris_recognize_module_demo\\WinFormsWithNamesPipe\\WinFormsWithNamesPipe\\WinFormsWithNamesPipe.csproj",
       "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\User\\Downloads\\repos\\WinFormsWithNamesPipe\\WinFormsWithNamesPipe\\obj\\",
+      "outputPath": "C:\\Users\\User\\Downloads\\repos\\iris_recognize_module_demo\\WinFormsWithNamesPipe\\WinFormsWithNamesPipe\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

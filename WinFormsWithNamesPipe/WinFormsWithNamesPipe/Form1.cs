@@ -1,12 +1,22 @@
+using System.Diagnostics;
 using System.IO.Pipes;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Text.Json;
+using System.Windows.Forms;
 using WinFormsWithNamesPipe.service;
+using static WinFormsWithNamesPipe.Form1;
 
 namespace WinFormsWithNamesPipe
 {
     public partial class Form1 : Form
     {
+        [DllImport("user32.dll")]
+        static extern IntPtr SetParent(IntPtr hWndChild, IntPtr hWndNewParent);
+        [DllImport("user32.dll")]
+        private static extern bool MoveWindow(IntPtr hWnd, int X, int Y, int nWidth, int nHeight, bool bRepaint);
+        private Process pythonProcess;
+
         // 定義要傳送給Python的資料格式
         public class Operation
         {
@@ -39,8 +49,38 @@ namespace WinFormsWithNamesPipe
         // 初始化要用於溝通的NamedPipe
         private void InitializePipeClient()
         {
-            pipeClient = new NamedPipeClientStream(".", "PythonPipe", PipeDirection.InOut);
-            pipeClient.Connect(5000); // Timeout after 5000ms
+            try
+            {
+                pipeClient = new NamedPipeClientStream(".", "PythonPipe", PipeDirection.InOut);
+                pipeClient.Connect(1000); // Timeout after 1000ms
+            }
+            catch (Exception)
+            {
+                pipeClient.Dispose();
+            }
+        }
+
+        // 檢查NamedPipe是否連線
+        private bool CheckPipeClientConnection()
+        {
+            // 初始化NamedPipe Client
+            if (pipeClient == null)
+            {
+                InitializePipeClient();
+            }
+            else if (!pipeClient.IsConnected)
+            {
+                InitializePipeClient();
+            }
+
+            try
+            {
+                return pipeClient.IsConnected;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
         }
 
         // 設定視窗位置
@@ -48,9 +88,13 @@ namespace WinFormsWithNamesPipe
         {
             try
             {
-                if (!pipeClient.IsConnected)
+                if (!CheckPipeClientConnection())
                 {
-                    InitializePipeClient();
+                    // 如果沒有連接，直接結束此方法
+                    // 顯示錯誤訊息
+                    MessageBox.Show("NamedPipe 連線失敗", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                    return;
                 }
 
                 using (StreamWriter sw = new StreamWriter(pipeClient, Encoding.UTF8, -1, leaveOpen: true))
@@ -84,9 +128,13 @@ namespace WinFormsWithNamesPipe
         {
             try
             {
-                if (!pipeClient.IsConnected)
+                if (!CheckPipeClientConnection())
                 {
-                    InitializePipeClient();
+                    // 如果沒有連接，直接結束此方法
+                    // 顯示錯誤訊息
+                    MessageBox.Show("NamedPipe 連線失敗", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                    return;
                 }
 
                 using (StreamWriter sw = new StreamWriter(pipeClient, Encoding.UTF8, -1, leaveOpen: true))
@@ -115,81 +163,23 @@ namespace WinFormsWithNamesPipe
             }
         }
 
-        // 控制camera 是否跟隨表單顯示
-        private void Form1_Activated(object sender, EventArgs e)
-        {
-            try
-            {
-                if (!pipeClient.IsConnected)
-                {
-                    InitializePipeClient();
-                }
-
-                using (StreamWriter sw = new StreamWriter(pipeClient, Encoding.UTF8, -1, leaveOpen: true))
-                using (StreamReader sr = new StreamReader(pipeClient, Encoding.UTF8, true, -1, leaveOpen: true))
-                {
-                    sw.AutoFlush = true;
-
-                    // 將資料組成json格式
-                    Operation operation = new Operation
-                    {
-                        Action = "setActivated",
-                        Data = new { }
-                    };
-                    string message = JsonSerializer.Serialize(operation);
-
-                    sw.WriteLine(message);
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-        // 控制camera 是否跟隨表單隱藏
-        private void Form1_Deactivate(object sender, EventArgs e)
-        {
-            // 判斷視窗是否最小化
-            if (WindowState == FormWindowState.Minimized)
-            {
-                try
-                {
-                    if (!pipeClient.IsConnected)
-                    {
-                        InitializePipeClient();
-                    }
-
-                    using (StreamWriter sw = new StreamWriter(pipeClient, Encoding.UTF8, -1, leaveOpen: true))
-                    using (StreamReader sr = new StreamReader(pipeClient, Encoding.UTF8, true, -1, leaveOpen: true))
-                    {
-                        sw.AutoFlush = true;
-
-                        // 將資料組成json格式
-                        Operation operation = new Operation
-                        {
-                            Action = "setMinimized",
-                            Data = new { }
-                        };
-                        string message = JsonSerializer.Serialize(operation);
-
-                        sw.WriteLine(message);
-                    }
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-            }
-        }
-
         private void Form1_Closing(object sender, EventArgs e)
         {
             try
             {
-                if (!pipeClient.IsConnected)
+                if (!CheckPipeClientConnection())
                 {
-                    InitializePipeClient();
+                    // 如果沒有連接，直接放棄透過api關閉Python應用程式
+                    // 直接進行關閉
+                    // 確保進程存在且尚未退出
+                    if (pythonProcess != null && !pythonProcess.HasExited)
+                    {
+                        // 嘗試正常結束進程
+                        pythonProcess.CloseMainWindow();
+                        pythonProcess.Close();
+                    }
+
+                    return;
                 }
 
                 using (StreamWriter sw = new StreamWriter(pipeClient, Encoding.UTF8, -1, leaveOpen: true))
@@ -200,12 +190,23 @@ namespace WinFormsWithNamesPipe
                     // 將資料組成json格式
                     Operation operation = new Operation
                     {
-                        Action = "setMinimized",
+                        Action = "closePrograme",
                         Data = new { }
                     };
                     string message = JsonSerializer.Serialize(operation);
 
                     sw.WriteLine(message);
+
+                    // 等待Python應用程式回傳訊息
+                    sr.ReadLine();
+
+                    // 確保進程存在且尚未退出
+                    if (pythonProcess != null && !pythonProcess.HasExited)
+                    {
+                        // 嘗試正常結束進程
+                        pythonProcess.CloseMainWindow();
+                        pythonProcess.Close();
+                    }
                 }
             }
             catch (Exception ex)
@@ -218,9 +219,13 @@ namespace WinFormsWithNamesPipe
         {
             try
             {
-                if (!pipeClient.IsConnected)
+                if (!CheckPipeClientConnection())
                 {
-                    InitializePipeClient();
+                    // 如果沒有連接，直接結束此方法
+                    // 顯示錯誤訊息
+                    MessageBox.Show("NamedPipe 連線失敗", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                    return;
                 }
 
                 using (StreamWriter sw = new StreamWriter(pipeClient, Encoding.UTF8, -1, leaveOpen: true))
@@ -276,9 +281,13 @@ namespace WinFormsWithNamesPipe
         {
             try
             {
-                if (!pipeClient.IsConnected)
+                if (!CheckPipeClientConnection())
                 {
-                    InitializePipeClient();
+                    // 如果沒有連接，直接結束此方法
+                    // 顯示錯誤訊息
+                    MessageBox.Show("NamedPipe 連線失敗", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                    return;
                 }
 
                 using (StreamWriter sw = new StreamWriter(pipeClient, Encoding.UTF8, -1, leaveOpen: true))
@@ -343,6 +352,142 @@ namespace WinFormsWithNamesPipe
 
                 // enabled button
                 startBuildIrisBtn.Enabled = true;
+            }
+        }
+
+        // 開啟python程式
+        private void openProgramBtn_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                // 啟動 Python 應用程式的 exe
+                pythonProcess = new Process
+                {
+                    StartInfo = new ProcessStartInfo
+                    {
+                        FileName = textBox1.Text,
+                        UseShellExecute = false
+                    }
+                };
+                pythonProcess.Start();
+
+                // 等待 Python 應用程式GUI建立
+                pythonProcess.WaitForInputIdle();
+
+                // 將 Python 應用程式窗口嵌入到 WinForms 中
+                SetParent(pythonProcess.MainWindowHandle, cameraPanel.Handle);
+
+                // 移動到最左上角
+                // 取出 cameraPanel 的長寬
+                int width = cameraPanel.Width;
+                int height = cameraPanel.Height;
+
+                MoveWindow(pythonProcess.MainWindowHandle, 0, 0, width, height, true);
+
+                try
+                {
+                    if (!CheckPipeClientConnection())
+                    {
+                        // 如果沒有連接，直接結束此方法
+                        // 顯示錯誤訊息
+                        MessageBox.Show("NamedPipe 連線失敗", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                        return;
+                    }
+
+                    using (StreamWriter sw = new StreamWriter(pipeClient, Encoding.UTF8, bufferSize: -1, leaveOpen: true))
+                    using (StreamReader sr = new StreamReader(pipeClient, Encoding.UTF8, true, -1, leaveOpen: true))
+                    {
+                        sw.AutoFlush = true;
+
+                        // 將資料組成json格式
+                        Operation operation = new Operation
+                        {
+                            Action = "openCamera",
+                            Data = new { }
+                        };
+                        string message = JsonSerializer.Serialize(operation);
+
+                        // 執行指令
+                        sw.WriteLine(message);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void openCameraBtn_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (!CheckPipeClientConnection())
+                {
+                    // 如果沒有連接，直接結束此方法
+                    // 顯示錯誤訊息
+                    MessageBox.Show("NamedPipe 連線失敗", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                    return;
+                }
+
+                using (StreamWriter sw = new StreamWriter(pipeClient, Encoding.UTF8, -1, leaveOpen: true))
+                using (StreamReader sr = new StreamReader(pipeClient, Encoding.UTF8, true, -1, leaveOpen: true))
+                {
+                    // 將資料組成json格式
+                    // action: openCamera
+                    Operation operation = new Operation
+                    {
+                        Action = "openCamera",
+                        Data = new { }
+                    };
+                    string message = JsonSerializer.Serialize(operation);
+
+                    sw.WriteLine(message);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void closeCameraBtn_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (!CheckPipeClientConnection())
+                {
+                    // 如果沒有連接，直接結束此方法
+                    // 顯示錯誤訊息
+                    MessageBox.Show("NamedPipe 連線失敗", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                    return;
+                }
+
+                using (StreamWriter sw = new StreamWriter(pipeClient, Encoding.UTF8, -1, leaveOpen: true))
+                using (StreamReader sr = new StreamReader(pipeClient, Encoding.UTF8, true, -1, leaveOpen: true))
+                {
+                    // 將資料組成json格式
+                    // action: closeCamera
+                    Operation operation = new Operation
+                    {
+                        Action = "closeCamera",
+                        Data = new { }
+                    };
+                    string message = JsonSerializer.Serialize(operation);
+
+                    sw.WriteLine(message);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }
