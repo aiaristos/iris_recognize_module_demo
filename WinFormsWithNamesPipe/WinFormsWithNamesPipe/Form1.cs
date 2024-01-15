@@ -190,7 +190,7 @@ namespace WinFormsWithNamesPipe
                     // 將資料組成json格式
                     Operation operation = new Operation
                     {
-                        Action = "closePrograme",
+                        Action = "closeProgram",
                         Data = new { }
                     };
                     string message = JsonSerializer.Serialize(operation);
