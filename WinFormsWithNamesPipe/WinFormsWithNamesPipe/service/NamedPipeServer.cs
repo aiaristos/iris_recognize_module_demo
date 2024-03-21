@@ -11,12 +11,16 @@ namespace WinFormsWithNamesPipe.service
         public delegate void MessageReceivedHandler(string message);
         public static event MessageReceivedHandler OnMessageReceived;
 
+        public delegate void CompareResultStatusHandler(int statusCode);
+        public static event CompareResultStatusHandler onCompareResultStatusReceived;
+
         // 定義要接收來自Python的資料格式
         public class RecivedResult
         {
             public required string Status { get; set; }
             public required int StatusCode { get; set; }
             public required string Message { get; set; }
+            public required string Action { get; set; }
             
             // data any type
             public required object Data { get; set; }
@@ -46,9 +50,17 @@ namespace WinFormsWithNamesPipe.service
                                 string result = "Status: " + recivedResultObj.Status + "\r\n" +
                                                 "StatusCode: " + recivedResultObj.StatusCode + "\r\n" +
                                                 "Message: " + recivedResultObj.Message + "\r\n\r\n" +
+                                                "Action: " + recivedResultObj.Action + "\r\n" +
                                                 "Data: " + recivedResultObj.Data + "\r\n";
 
                                 OnMessageReceived?.Invoke(result);
+
+                                // 判斷是否傳入的是比對結果
+                                // 如果是，則額外觸發compareResultStatusReceived事件
+                                if (recivedResultObj.Action == "compare_iris")
+                                {
+                                    onCompareResultStatusReceived?.Invoke(recivedResultObj.StatusCode);
+                                }
                             }
                         }
                         catch (IOException e)
