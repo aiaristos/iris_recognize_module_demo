@@ -27,6 +27,7 @@ namespace WinFormsWithNamesPipe
         public class RecivedResult
         {
             public required string Status { get; set; }
+            public required string Action { get; set; }
             public required string Message { get; set; }
         }
 
@@ -179,7 +180,9 @@ namespace WinFormsWithNamesPipe
                                 season_id = seasonIdTextBox.Text,
                                 loft_id = loftIdTextBox.Text,
                                 feet_number = feetNumberTextBox.Text,
-                                folder_path = @"C:\iris_data"
+                                folder_path = @"C:\iris_data",
+                                left_build_num = leftBuildNum.Value,
+                                right_build_num = rightBuildNum.Value
                             }
                         };
                         string message = JsonSerializer.Serialize(operation);
@@ -190,7 +193,14 @@ namespace WinFormsWithNamesPipe
                         string result = sr.ReadLine();
                         RecivedResult recivedResult = JsonSerializer.Deserialize<RecivedResult>(result);
 
-                        if (recivedResult.Status == "Error")
+                        while (recivedResult.Action != "startBuildIris")
+                        {
+                            // 接收來自Python的資料
+                            result = sr.ReadLine();
+                            recivedResult = JsonSerializer.Deserialize<RecivedResult>(result);
+                        }
+
+                        if (recivedResult.Status == "error")
                         {
                             MessageBox.Show(recivedResult.Message, recivedResult.Status, MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
@@ -261,7 +271,14 @@ namespace WinFormsWithNamesPipe
                         string result = sr.ReadLine();
                         RecivedResult recivedResult = JsonSerializer.Deserialize<RecivedResult>(result);
 
-                        if (recivedResult.Status == "Error")
+                        while (recivedResult.Action != "stopBuildIris")
+                        {
+                            // 接收來自Python的資料
+                            result = sr.ReadLine();
+                            recivedResult = JsonSerializer.Deserialize<RecivedResult>(result);
+                        }
+
+                        if (recivedResult.Status == "error")
                         {
                             MessageBox.Show(recivedResult.Message, recivedResult.Status, MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
@@ -323,7 +340,7 @@ namespace WinFormsWithNamesPipe
 
         // 更新顯示比對結果
         private void UpdateCompareResultUI(int statusCode)
-        { 
+        {
             // 確保跨執行序的操作安全
             if (InvokeRequired)
             {
@@ -443,7 +460,9 @@ namespace WinFormsWithNamesPipe
                         Operation operation = new Operation
                         {
                             Action = "openCamera",
-                            Data = new { }
+                            Data = new {
+                                single_camera_mode = "disable"
+                            }
                         };
                         string message = JsonSerializer.Serialize(operation);
 
@@ -556,7 +575,14 @@ namespace WinFormsWithNamesPipe
                         string result = sr.ReadLine();
                         RecivedResult recivedResult = JsonSerializer.Deserialize<RecivedResult>(result);
 
-                        if (recivedResult.Status == "Error")
+                        while (recivedResult.Action != "startCompareIris")
+                        {
+                            // 接收來自Python的資料
+                            result = sr.ReadLine();
+                            recivedResult = JsonSerializer.Deserialize<RecivedResult>(result);
+                        }
+
+                        if (recivedResult.Status == "error")
                         {
                             MessageBox.Show(recivedResult.Message, recivedResult.Status, MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
@@ -631,7 +657,14 @@ namespace WinFormsWithNamesPipe
                         string result = sr.ReadLine();
                         RecivedResult recivedResult = JsonSerializer.Deserialize<RecivedResult>(result);
 
-                        if (recivedResult.Status == "Error")
+                        while (recivedResult.Action != "stopCompareIris")
+                        {
+                            // 接收來自Python的資料
+                            result = sr.ReadLine();
+                            recivedResult = JsonSerializer.Deserialize<RecivedResult>(result);
+                        }
+
+                        if (recivedResult.Status == "error")
                         {
                             MessageBox.Show(recivedResult.Message, recivedResult.Status, MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
@@ -667,7 +700,7 @@ namespace WinFormsWithNamesPipe
             }
         }
 
-        private void focusOnLeftBtn_Click(object sender, EventArgs e)
+        private void compareFocusOnLeftBtn_Click(object sender, EventArgs e)
         {
             while (true)
             {
@@ -690,7 +723,7 @@ namespace WinFormsWithNamesPipe
                         // action: setFocusCamera
                         Operation operation = new Operation
                         {
-                            Action = "setFocusCamera",
+                            Action = "setCompareFocusCamera",
                             Data = new
                             {
                                 camera_src = "left"
@@ -717,7 +750,7 @@ namespace WinFormsWithNamesPipe
             }
         }
 
-        private void focusOnRightBtn_Click(object sender, EventArgs e)
+        private void compareFocusOnRightBtn_Click(object sender, EventArgs e)
         {
             while (true)
             {
@@ -740,7 +773,7 @@ namespace WinFormsWithNamesPipe
                         // action: setFocusCamera
                         Operation operation = new Operation
                         {
-                            Action = "setFocusCamera",
+                            Action = "setCompareFocusCamera",
                             Data = new
                             {
                                 camera_src = "right"

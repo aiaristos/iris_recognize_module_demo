@@ -52,8 +52,14 @@
             label6 = new Label();
             startCompareIrisBtn = new Button();
             compareResult = new TextBox();
-            focusOnLeftBtn = new Button();
-            focusOnRightBtn = new Button();
+            label7 = new Label();
+            label8 = new Label();
+            leftBuildNum = new NumericUpDown();
+            rightBuildNum = new NumericUpDown();
+            compareFocusOnLeftBtn = new Button();
+            compareFocusOnRightBtn = new Button();
+            ((System.ComponentModel.ISupportInitialize)leftBuildNum).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)rightBuildNum).BeginInit();
             SuspendLayout();
             // 
             // label2
@@ -264,7 +270,7 @@
             // 
             stopCompareIrisBtn.Enabled = false;
             stopCompareIrisBtn.Font = new Font("Microsoft JhengHei UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 136);
-            stopCompareIrisBtn.Location = new Point(363, 342);
+            stopCompareIrisBtn.Location = new Point(363, 320);
             stopCompareIrisBtn.Margin = new Padding(2);
             stopCompareIrisBtn.Name = "stopCompareIrisBtn";
             stopCompareIrisBtn.Size = new Size(153, 37);
@@ -287,7 +293,7 @@
             // startCompareIrisBtn
             // 
             startCompareIrisBtn.Font = new Font("Microsoft JhengHei UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 136);
-            startCompareIrisBtn.Location = new Point(162, 342);
+            startCompareIrisBtn.Location = new Point(162, 320);
             startCompareIrisBtn.Margin = new Padding(2);
             startCompareIrisBtn.Name = "startCompareIrisBtn";
             startCompareIrisBtn.Size = new Size(153, 37);
@@ -302,42 +308,86 @@
             compareResult.BorderStyle = BorderStyle.None;
             compareResult.Font = new Font("Maple UI", 20.25F, FontStyle.Regular, GraphicsUnit.Point, 128);
             compareResult.ForeColor = SystemColors.Window;
-            compareResult.Location = new Point(552, 342);
+            compareResult.Location = new Point(541, 350);
             compareResult.Name = "compareResult";
             compareResult.Size = new Size(139, 36);
             compareResult.TabIndex = 42;
             // 
-            // focusOnLeftBtn
+            // label7
             // 
-            focusOnLeftBtn.Font = new Font("Microsoft JhengHei UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 136);
-            focusOnLeftBtn.Location = new Point(539, 213);
-            focusOnLeftBtn.Margin = new Padding(2);
-            focusOnLeftBtn.Name = "focusOnLeftBtn";
-            focusOnLeftBtn.Size = new Size(153, 37);
-            focusOnLeftBtn.TabIndex = 43;
-            focusOnLeftBtn.Text = "只拍左側";
-            focusOnLeftBtn.UseVisualStyleBackColor = true;
-            focusOnLeftBtn.Click += focusOnLeftBtn_Click;
+            label7.AutoSize = true;
+            label7.Font = new Font("Microsoft JhengHei UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 136);
+            label7.Location = new Point(535, 220);
+            label7.Margin = new Padding(2, 0, 2, 0);
+            label7.Name = "label7";
+            label7.Size = new Size(89, 20);
+            label7.TabIndex = 43;
+            label7.Text = "左側數量：";
             // 
-            // focusOnRightBtn
+            // label8
             // 
-            focusOnRightBtn.Font = new Font("Microsoft JhengHei UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 136);
-            focusOnRightBtn.Location = new Point(539, 254);
-            focusOnRightBtn.Margin = new Padding(2);
-            focusOnRightBtn.Name = "focusOnRightBtn";
-            focusOnRightBtn.Size = new Size(153, 37);
-            focusOnRightBtn.TabIndex = 44;
-            focusOnRightBtn.Text = "只拍右側";
-            focusOnRightBtn.UseVisualStyleBackColor = true;
-            focusOnRightBtn.Click += focusOnRightBtn_Click;
+            label8.AutoSize = true;
+            label8.Font = new Font("Microsoft JhengHei UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 136);
+            label8.Location = new Point(535, 256);
+            label8.Margin = new Padding(2, 0, 2, 0);
+            label8.Name = "label8";
+            label8.Size = new Size(89, 20);
+            label8.TabIndex = 45;
+            label8.Text = "右側數量：";
+            // 
+            // leftBuildNum
+            // 
+            leftBuildNum.Location = new Point(629, 220);
+            leftBuildNum.Maximum = new decimal(new int[] { 10, 0, 0, 0 });
+            leftBuildNum.Name = "leftBuildNum";
+            leftBuildNum.Size = new Size(63, 24);
+            leftBuildNum.TabIndex = 46;
+            leftBuildNum.Value = new decimal(new int[] { 3, 0, 0, 0 });
+            // 
+            // rightBuildNum
+            // 
+            rightBuildNum.Location = new Point(629, 257);
+            rightBuildNum.Maximum = new decimal(new int[] { 10, 0, 0, 0 });
+            rightBuildNum.Name = "rightBuildNum";
+            rightBuildNum.Size = new Size(63, 24);
+            rightBuildNum.TabIndex = 47;
+            rightBuildNum.Value = new decimal(new int[] { 3, 0, 0, 0 });
+            // 
+            // compareFocusOnLeftBtn
+            // 
+            compareFocusOnLeftBtn.Font = new Font("Microsoft JhengHei UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 136);
+            compareFocusOnLeftBtn.Location = new Point(162, 374);
+            compareFocusOnLeftBtn.Margin = new Padding(2);
+            compareFocusOnLeftBtn.Name = "compareFocusOnLeftBtn";
+            compareFocusOnLeftBtn.Size = new Size(153, 37);
+            compareFocusOnLeftBtn.TabIndex = 48;
+            compareFocusOnLeftBtn.Text = "只使用左側";
+            compareFocusOnLeftBtn.UseVisualStyleBackColor = true;
+            compareFocusOnLeftBtn.Click += compareFocusOnLeftBtn_Click;
+            // 
+            // compareFocusOnRightBtn
+            // 
+            compareFocusOnRightBtn.Font = new Font("Microsoft JhengHei UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 136);
+            compareFocusOnRightBtn.Location = new Point(363, 374);
+            compareFocusOnRightBtn.Margin = new Padding(2);
+            compareFocusOnRightBtn.Name = "compareFocusOnRightBtn";
+            compareFocusOnRightBtn.Size = new Size(153, 37);
+            compareFocusOnRightBtn.TabIndex = 49;
+            compareFocusOnRightBtn.Text = "只使用右側";
+            compareFocusOnRightBtn.UseVisualStyleBackColor = true;
+            compareFocusOnRightBtn.Click += compareFocusOnRightBtn_Click;
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(8F, 17F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1447, 628);
-            Controls.Add(focusOnRightBtn);
-            Controls.Add(focusOnLeftBtn);
+            Controls.Add(compareFocusOnRightBtn);
+            Controls.Add(compareFocusOnLeftBtn);
+            Controls.Add(rightBuildNum);
+            Controls.Add(leftBuildNum);
+            Controls.Add(label8);
+            Controls.Add(label7);
             Controls.Add(compareResult);
             Controls.Add(stopCompareIrisBtn);
             Controls.Add(label6);
@@ -366,6 +416,8 @@
             Name = "Form1";
             Text = "Form1";
             FormClosed += Form1_Closing;
+            ((System.ComponentModel.ISupportInitialize)leftBuildNum).EndInit();
+            ((System.ComponentModel.ISupportInitialize)rightBuildNum).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -395,7 +447,11 @@
         private Label label6;
         private Button startCompareIrisBtn;
         private TextBox compareResult;
-        private Button focusOnLeftBtn;
-        private Button focusOnRightBtn;
+        private Label label7;
+        private Label label8;
+        private NumericUpDown leftBuildNum;
+        private NumericUpDown rightBuildNum;
+        private Button compareFocusOnLeftBtn;
+        private Button compareFocusOnRightBtn;
     }
 }

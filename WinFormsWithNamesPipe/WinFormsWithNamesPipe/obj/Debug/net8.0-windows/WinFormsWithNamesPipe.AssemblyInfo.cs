@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("WinFormsWithNamesPipe")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+21d74b11856a90671d876fb2f31b18c214823f55")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+0668d2ed3f71337d06e456bc5ac4450d21b71612")]
 [assembly: System.Reflection.AssemblyProductAttribute("WinFormsWithNamesPipe")]
 [assembly: System.Reflection.AssemblyTitleAttribute("WinFormsWithNamesPipe")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
