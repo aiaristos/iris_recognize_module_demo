@@ -20,7 +20,7 @@
     
     
       
-        <title>建檔/比對回傳格式 - 嶺東介接API</title>
+        <title>載入任務/建檔/比對回傳格式 - 嶺東介接API</title>
       
     
     
@@ -100,7 +100,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              建檔/比對回傳格式
+              載入任務/建檔/比對回傳格式
             
           </span>
         </div>
@@ -332,7 +332,7 @@
           
   
   <span class="md-ellipsis">
-    建檔/比對回傳格式
+    載入任務/建檔/比對回傳格式
   </span>
   
 
@@ -343,7 +343,7 @@
         
   
   <span class="md-ellipsis">
-    建檔/比對回傳格式
+    載入任務/建檔/比對回傳格式
   </span>
   
 
@@ -367,7 +367,7 @@
         <li class="md-nav__item">
   <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
-      虹膜建檔回傳結果
+      載入任務回傳結果
     </span>
   </a>
   
@@ -375,6 +375,15 @@
       
         <li class="md-nav__item">
   <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      虹膜建檔回傳結果
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
       虹膜比對回傳結果
     </span>
@@ -439,7 +448,7 @@
         <li class="md-nav__item">
   <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
-      虹膜建檔回傳結果
+      載入任務回傳結果
     </span>
   </a>
   
@@ -447,6 +456,15 @@
       
         <li class="md-nav__item">
   <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      虹膜建檔回傳結果
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
       虹膜比對回傳結果
     </span>
@@ -469,17 +487,106 @@
                   
 
 
-<h1 id="_1">建檔/比對回傳格式</h1>
+<h1 id="_1">載入任務/建檔/比對回傳格式</h1>
 <p><strong><font color='dark-red'>! 需要在您的外部程式中也架設用於接收任務處理結果的Named Pipe Server。</font></strong></p>
-<p>不同於 Api 頁面執行的結果會立即回傳，此處會等到指派的任務<strong>(建檔/比對)</strong>執行完成或者中斷後，才會將最後結果回傳，
+<p>不同於 Api 頁面執行的結果會立即回傳，此處會等到指派的任務<strong>(載入任務/建檔/比對)</strong>執行完成或者中斷後，才會將最後結果回傳，
 在此將各個任務回傳的結果格式與說明。</p>
 <p>以下所有可能的回傳結果：</p>
 <ul>
+<li><a href="#docstring.response_message.ResponseMessage.loading_task_complete">載入任務回傳結果</a></li>
 <li><a href="#docstring.response_message.ResponseMessage.build_iris_result">虹膜建檔回傳結果</a></li>
 <li><a href="#docstring.response_message.ResponseMessage.compare_iris_result">虹膜比對回傳結果</a></li>
 </ul>
 <hr />
-<h2 id="_2"><strong><code>虹膜建檔回傳結果</code></strong></h2>
+<h2 id="_2"><strong><code>載入任務回傳結果</code></strong></h2>
+
+
+
+<div class="doc doc-object doc-function">
+
+
+
+
+<a id="docstring.response_message.ResponseMessage.loading_task_complete"></a>
+  <div class="doc doc-contents first">
+  
+      <p>載入任務完成的回傳訊息</p>
+
+
+
+  <p><strong>Returns:</strong></p>
+  <table>
+    <thead>
+      <tr>
+<th>Name</th>        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr>
+<td><code>Status</code></td>          <td>
+                <code>str</code>
+          </td>
+          <td>
+            <div class="doc-md-description">
+              <p>執行狀態，success or error</p>
+            </div>
+          </td>
+        </tr>
+        <tr>
+<td><code>StatusCode</code></td>          <td>
+                <code>int</code>
+          </td>
+          <td>
+            <div class="doc-md-description">
+              <p>執行狀態碼，0 or 1，0為成功，1為失敗</p>
+            </div>
+          </td>
+        </tr>
+        <tr>
+<td><code>Message</code></td>          <td>
+                <code>str</code>
+          </td>
+          <td>
+            <div class="doc-md-description">
+              <p>執行訊息</p>
+            </div>
+          </td>
+        </tr>
+        <tr>
+<td><code>Action</code></td>          <td>
+                <code>str</code>
+          </td>
+          <td>
+            <div class="doc-md-description">
+              <p>執行動作</p>
+            </div>
+          </td>
+        </tr>
+        <tr>
+<td><code>Data</code></td>          <td>
+                <code>dict</code>
+          </td>
+          <td>
+            <div class="doc-md-description">
+              <p>執行結果</p>
+            </div>
+          </td>
+        </tr>
+    </tbody>
+  </table>
+      <div class="language-json highlight"><span class="filename">Response Sample</span><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="w">    </span><span class="p">{</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">        </span><span class="nt">&quot;Status&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;success&quot;</span><span class="p">,</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">        </span><span class="nt">&quot;StatusCode&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">        </span><span class="nt">&quot;Message&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Loading complete!&quot;</span><span class="p">,</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">        </span><span class="nt">&quot;Action&quot;</span><span class="p">:</span><span class="w"> </span><span class="nt">&quot;loading_task&quot;</span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">        </span><span class="nt">&quot;Data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="w">    </span><span class="p">}</span>
+</span></code></pre></div>
+
+  </div>
+
+</div><h2 id="_3"><strong><code>虹膜建檔回傳結果</code></strong></h2>
 
 
 
@@ -595,12 +702,22 @@
           </td>
         </tr>
         <tr>
-<td><code>build_num</code></td>          <td>
+<td><code>left_build_num</code></td>          <td>
                 <code>int</code>
           </td>
           <td>
             <div class="doc-md-description">
-              <p>建檔張數</p>
+              <p>左鏡頭建檔張數</p>
+            </div>
+          </td>
+        </tr>
+        <tr>
+<td><code>right_build_num</code></td>          <td>
+                <code>int</code>
+          </td>
+          <td>
+            <div class="doc-md-description">
+              <p>右鏡頭建檔張數</p>
             </div>
           </td>
         </tr>
@@ -646,21 +763,22 @@
 </span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="w">            </span><span class="nt">&quot;loft_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;A&quot;</span><span class="p">,</span>
 </span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="w">            </span><span class="nt">&quot;feet_number&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;001&quot;</span><span class="p">,</span>
 </span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="w">            </span><span class="nt">&quot;folder_path&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;D:\iris&quot;</span><span class="p">,</span>
-</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="w">            </span><span class="nt">&quot;build_num&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span>
-</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="w">            </span><span class="nt">&quot;complete_num&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
-</span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="w">            </span><span class="nt">&quot;save_path&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;D:\iris\2021\A\001\&quot;,</span>
-</span><span id="__span-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="s2">            &quot;</span><span class="err">save_</span><span class="kc">f</span><span class="err">ile_</span><span class="kc">na</span><span class="err">me_lis</span><span class="kc">t</span><span class="s2">&quot;: [</span>
-</span><span id="__span-0-15"><a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a><span class="s2">                &quot;</span><span class="err">R</span><span class="mi">-</span><span class="err">ra</span><span class="kc">n</span><span class="err">d_uid_</span><span class="mf">1.</span><span class="err">jpg</span><span class="s2">&quot;,</span>
-</span><span id="__span-0-16"><a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a><span class="s2">                &quot;</span><span class="err">R</span><span class="mi">-</span><span class="err">ra</span><span class="kc">n</span><span class="err">d_uid_</span><span class="mf">2.</span><span class="err">jpg</span><span class="s2">&quot;,</span>
-</span><span id="__span-0-17"><a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a><span class="s2">                &quot;</span><span class="err">R</span><span class="mi">-</span><span class="err">ra</span><span class="kc">n</span><span class="err">d_uid_</span><span class="mf">3.</span><span class="err">jpg&quot;</span>
-</span><span id="__span-0-18"><a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a><span class="err">            ]</span>
-</span><span id="__span-0-19"><a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a><span class="err">        }</span>
-</span><span id="__span-0-20"><a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a><span class="err">    }</span>
+</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="w">            </span><span class="nt">&quot;left_build_num&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span>
+</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="w">            </span><span class="nt">&quot;right_build_num&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span>
+</span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="w">            </span><span class="nt">&quot;complete_num&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+</span><span id="__span-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="w">            </span><span class="nt">&quot;save_path&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;D:\iris\2021\A\001\&quot;,</span>
+</span><span id="__span-0-15"><a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a><span class="s2">            &quot;</span><span class="err">save_</span><span class="kc">f</span><span class="err">ile_</span><span class="kc">na</span><span class="err">me_lis</span><span class="kc">t</span><span class="s2">&quot;: [</span>
+</span><span id="__span-0-16"><a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a><span class="s2">                &quot;</span><span class="err">R</span><span class="mi">-</span><span class="err">ra</span><span class="kc">n</span><span class="err">d_uid_</span><span class="mf">1.</span><span class="err">jpg</span><span class="s2">&quot;,</span>
+</span><span id="__span-0-17"><a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a><span class="s2">                &quot;</span><span class="err">R</span><span class="mi">-</span><span class="err">ra</span><span class="kc">n</span><span class="err">d_uid_</span><span class="mf">2.</span><span class="err">jpg</span><span class="s2">&quot;,</span>
+</span><span id="__span-0-18"><a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a><span class="s2">                &quot;</span><span class="err">R</span><span class="mi">-</span><span class="err">ra</span><span class="kc">n</span><span class="err">d_uid_</span><span class="mf">3.</span><span class="err">jpg&quot;</span>
+</span><span id="__span-0-19"><a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a><span class="err">            ]</span>
+</span><span id="__span-0-20"><a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a><span class="err">        }</span>
+</span><span id="__span-0-21"><a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a><span class="err">    }</span>
 </span></code></pre></div>
 
   </div>
 
-</div><h2 id="_3"><strong><code>虹膜比對回傳結果</code></strong></h2>
+</div><h2 id="_4"><strong><code>虹膜比對回傳結果</code></strong></h2>
 
 
 

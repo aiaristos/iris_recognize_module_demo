@@ -303,6 +303,15 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      該攝影機禁止使用
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -408,7 +417,7 @@
         
   
   <span class="md-ellipsis">
-    建檔/比對回傳格式
+    載入任務/建檔/比對回傳格式
   </span>
   
 
@@ -508,6 +517,15 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      該攝影機禁止使用
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -527,26 +545,32 @@
 <p>以下針對各個畫面做其對應狀態的詳細的說明</p>
 <h2 id="_2"><code>載入</code></h2>
 <p>此畫面代表程式在進行載入
-相關的內容有 <strong>判斷網路是否連接</strong>、 <strong>載入辨識模型</strong>、 <strong>GPU 裝置調用和測試</strong> <br>
-如果在此時對API發送訊號，會不斷<strong>堵塞</strong>，直到載入完成才會繼續執行傳入的動作
+相關的內容有 <strong>判斷網路是否連接</strong>、 <strong>載入辨識模型</strong>、 <strong>GPU 裝置調用和測試</strong> <br></p>
+<p><strong><font color='dark-red'>!注意，在程式載入完成前所有API 指令皆無法生效 </font></strong> <br>
+載入完成後會主動發訊息到您的Named Pipe Server，詳細回傳格式可參考 <a href="response_message.html#_2">載入任務回傳結果</a>
 <img alt="LoadingPage" src="images/loading_mask.gif" /></p>
 <h2 id="_3"><code>歡迎使用</code></h2>
 <p>程式載入完成並可開始使用的畫面
 <img alt="WelcomePage" src="images/welcome.jpg" /></p>
 <h2 id="_4"><code>網路連線失敗</code></h2>
-<p>如果程式判斷當前網路環境無法連線
+<p>如果程式判斷當前網路環境無法連線<br>
 則會顯示此畫面
 <img alt="ConnectionErrorPage" src="images/no_connection.jpg" /></p>
 <h2 id="_5"><code>攝影機載入中</code></h2>
-<p>當程式在嘗試與攝影機晶片建立連接
-或是等待另外一個攝影機連上線時
+<p>當程式在嘗試與攝影機晶片建立連接<br>
+或是等待另外一個攝影機連上線時<br>
 會顯示以下畫面
 <img alt="WaitCameraConnectionPage" src="images/camera_loading.png" /></p>
 <h2 id="_6"><code>攝影機連線失敗</code></h2>
-<p>當檢測到攝影機連線失敗
-比如: 線材脫落、晶片損毀
+<p>當檢測到攝影機連線失敗<br>
+比如: 線材脫落、晶片損毀<br>
 會顯示以下畫面
 <img alt="CameraConnectionErrorPage" src="images/no_camera_connected.png" /></p>
+<h2 id="_7"><code>該攝影機禁止使用</code></h2>
+<p>當建檔的left_build_num / right_build_num 其一設定為0<br>
+或是比對時，有透過set_compare_focus_camera 指定要focus的鏡頭<br>
+被禁止使用的攝影機會顯示以下畫面
+<img alt="CameraDisablePage" src="images/camera_disable.png" /></p>
 
 
 

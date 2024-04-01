@@ -401,7 +401,7 @@
         
   
   <span class="md-ellipsis">
-    建檔/比對回傳格式
+    載入任務/建檔/比對回傳格式
   </span>
   
 
@@ -556,20 +556,31 @@
 <div class="language-C# highlight"><span class="filename">傳送與接收</span><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="w">    </span><span class="c1">// 在python 端接收到指令後</span>
 </span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">    </span><span class="c1">// 會立即回傳該指令是否運行成功的json格式之結果</span>
 </span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">    </span><span class="c1">// 這裡可以選擇是否要阻塞程式等待結果回傳</span>
-</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w">    </span><span class="c1">// 或者選擇不等待</span>
-</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>
-</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="w">    </span><span class="c1">// 送出資料</span>
-</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="w">    </span><span class="n">sw</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="n">message</span><span class="p">);</span>
-</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>
-</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="w">    </span><span class="c1">// 阻塞並等待結果回傳</span>
-</span><span id="__span-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="w">    </span><span class="c1">// 使用StreamReader讀取資料時</span>
-</span><span id="__span-2-11"><a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a><span class="w">    </span><span class="c1">// 必須等到有實際讀取到資料才會繼續往下執行</span>
-</span><span id="__span-2-12"><a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a><span class="w">    </span><span class="c1">// 如果有運用上的考量，也可不寫此行</span>
-</span><span id="__span-2-13"><a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a><span class="w">    </span><span class="kt">string</span><span class="w"> </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sr</span><span class="p">.</span><span class="n">ReadLine</span><span class="p">();</span>
-</span><span id="__span-2-14"><a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a>
-</span><span id="__span-2-15"><a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a><span class="w">    </span><span class="c1">// 由於回傳結果預設也是json格式</span>
-</span><span id="__span-2-16"><a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a><span class="w">    </span><span class="c1">// 將結果轉換回obj方便做後續判讀</span>
-</span><span id="__span-2-17"><a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a><span class="w">    </span><span class="n">RecivedResult</span><span class="w"> </span><span class="n">recivedResult</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">JsonSerializer</span><span class="p">.</span><span class="n">Deserialize</span><span class="o">&lt;</span><span class="n">RecivedResult</span><span class="o">&gt;</span><span class="p">(</span><span class="n">result</span><span class="p">);</span>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w">    </span><span class="c1">// 或者選擇不等待，但並不推薦此種方式</span>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="w">    </span><span class="c1">// !如果不接收的話則需要考慮該如何處理資料錯位的問題</span>
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>
+</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="w">    </span><span class="c1">// 送出資料</span>
+</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="w">    </span><span class="n">sw</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="n">message</span><span class="p">);</span>
+</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>
+</span><span id="__span-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="w">    </span><span class="c1">// 阻塞並等待結果回傳</span>
+</span><span id="__span-2-11"><a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a><span class="w">    </span><span class="c1">// 使用StreamReader讀取資料時</span>
+</span><span id="__span-2-12"><a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a><span class="w">    </span><span class="c1">// 必須等到有實際讀取到資料才會繼續往下執行</span>
+</span><span id="__span-2-13"><a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a><span class="w">    </span><span class="c1">// 如果有運用上的考量，也可不寫此行，但要注意資料錯位</span>
+</span><span id="__span-2-14"><a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a><span class="w">    </span><span class="c1">// 比如會取得前幾次的回傳結果等情況</span>
+</span><span id="__span-2-15"><a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a><span class="w">    </span><span class="c1">// 推薦使用異步或是執行緒的方式來處理</span>
+</span><span id="__span-2-16"><a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a><span class="w">    </span><span class="kt">string</span><span class="w"> </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sr</span><span class="p">.</span><span class="n">ReadLine</span><span class="p">();</span>
+</span><span id="__span-2-17"><a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a>
+</span><span id="__span-2-18"><a id="__codelineno-2-18" name="__codelineno-2-18" href="#__codelineno-2-18"></a><span class="w">    </span><span class="c1">// 由於回傳結果預設也是json格式</span>
+</span><span id="__span-2-19"><a id="__codelineno-2-19" name="__codelineno-2-19" href="#__codelineno-2-19"></a><span class="w">    </span><span class="c1">// 將結果轉換回obj方便做後續判讀</span>
+</span><span id="__span-2-20"><a id="__codelineno-2-20" name="__codelineno-2-20" href="#__codelineno-2-20"></a><span class="w">    </span><span class="n">RecivedResult</span><span class="w"> </span><span class="n">recivedResult</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">JsonSerializer</span><span class="p">.</span><span class="n">Deserialize</span><span class="o">&lt;</span><span class="n">RecivedResult</span><span class="o">&gt;</span><span class="p">(</span><span class="n">result</span><span class="p">);</span>
+</span><span id="__span-2-21"><a id="__codelineno-2-21" name="__codelineno-2-21" href="#__codelineno-2-21"></a>
+</span><span id="__span-2-22"><a id="__codelineno-2-22" name="__codelineno-2-22" href="#__codelineno-2-22"></a><span class="w">    </span><span class="c1">// 處理資料錯位範例(不推薦)</span>
+</span><span id="__span-2-23"><a id="__codelineno-2-23" name="__codelineno-2-23" href="#__codelineno-2-23"></a><span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">recivedResult</span><span class="p">.</span><span class="n">Action</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="s">&quot;startBuildIris&quot;</span><span class="p">)</span>
+</span><span id="__span-2-24"><a id="__codelineno-2-24" name="__codelineno-2-24" href="#__codelineno-2-24"></a><span class="w">    </span><span class="p">{</span>
+</span><span id="__span-2-25"><a id="__codelineno-2-25" name="__codelineno-2-25" href="#__codelineno-2-25"></a><span class="w">        </span><span class="c1">// 不斷取得直到取得相同的Action回應為止</span>
+</span><span id="__span-2-26"><a id="__codelineno-2-26" name="__codelineno-2-26" href="#__codelineno-2-26"></a><span class="w">        </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sr</span><span class="p">.</span><span class="n">ReadLine</span><span class="p">();</span>
+</span><span id="__span-2-27"><a id="__codelineno-2-27" name="__codelineno-2-27" href="#__codelineno-2-27"></a><span class="w">        </span><span class="n">recivedResult</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">JsonSerializer</span><span class="p">.</span><span class="n">Deserialize</span><span class="o">&lt;</span><span class="n">RecivedResult</span><span class="o">&gt;</span><span class="p">(</span><span class="n">result</span><span class="p">);</span>
+</span><span id="__span-2-28"><a id="__codelineno-2-28" name="__codelineno-2-28" href="#__codelineno-2-28"></a><span class="w">    </span><span class="p">}</span>
 </span></code></pre></div>
 <h3 id="3"><strong><code>3. 關於模式</code></strong></h3>
 <p>考慮到某些API在運行時，彼此可能會有行為上的衝突
@@ -595,11 +606,11 @@
 </tr>
 <tr>
 <td>建檔模式</td>
-<td><code>setActivated</code><br><code>setMinimized</code><br><code>closeProgram</code><br><code>setFocusCamera</code><br><code>stopBuildIris</code>: <strong><font color='#4051b5'> 呼叫後會脫離建檔模式 </font></strong><br><br><strong>建檔完畢後會自動脫離返回正常模式</strong><br></td>
+<td><code>setActivated</code><br><code>setMinimized</code><br><code>closeProgram</code><br><code>stopBuildIris</code>: <strong><font color='#4051b5'> 呼叫後會脫離建檔模式 </font></strong><br><br><strong>建檔完畢後會自動脫離返回正常模式</strong><br></td>
 </tr>
 <tr>
 <td>比對模式</td>
-<td><code>setActivated</code><br><code>setMinimized</code><br><code>closeProgram</code><br><code>setFocusCamera</code><br><code>stopCompareIris</code>: <strong><font color='#4051b5'> 呼叫後會脫離比對模式 </font></strong><br><br><strong>比對完畢後會自動脫離返回正常模式</strong><br></td>
+<td><code>setActivated</code><br><code>setMinimized</code><br><code>closeProgram</code><br><code>setCompareFocusCamera</code><br><code>stopCompareIris</code>: <strong><font color='#4051b5'> 呼叫後會脫離比對模式 </font></strong><br><br><strong>比對完畢後會自動脫離返回正常模式</strong><br></td>
 </tr>
 </tbody>
 </table>
@@ -629,16 +640,20 @@
 <td><code>width</code>: <strong>程式寬度</strong>，限制為<strong>int</strong>型態的數值，系統內會嘗試轉換型態，預設數值<strong>100</strong><br> <code>height</code>: <strong>程式高度</strong>，限制為<strong>int</strong>型態的數值，系統內會嘗試轉換型態，預設數值<strong>100</strong><br></td>
 </tr>
 <tr>
+<td><code>openCamera</code></td>
+<td><code>single_camera_mode</code>: <strong>選擇採用的單鏡頭模式</strong>，可針對緊急情況下調整到單鏡頭模式<br> 限制只能傳入<strong>left</strong>, <strong>right</strong>，和<strong>disable</strong> 這三個<strong>string</strong>字串，預設數值<strong>disable</strong> <br><br> <strong>disable</strong>: 一般雙鏡頭模式 <br> <strong>left</strong>, <strong>right</strong>: 只開啟左或右側的鏡頭</td>
+</tr>
+<tr>
 <td><code>startBuildIris</code></td>
-<td><code>season_id</code>: <strong>賽季編號</strong>，限制為<strong>string</strong>型態的字串，<font color='#f76560'><strong>必填</strong></font><br> <code>loft_id</code>: <strong>舍號</strong>，限制為<strong>string</strong>型態的字串，<font color='#f76560'><strong>必填</strong></font><br> <code>feet_number</code>: <strong>腳環編號</strong>，限制為<strong>string</strong>型態的字串，<font color='#f76560'><strong>必填</strong></font><br> <code>folder_path</code>: <strong>建檔資料夾</strong>，限制為<strong>string</strong>型態的字串，<font color='#f76560'><strong>必填</strong></font><br> <code>build_num</code>: <strong>建檔張數</strong>，限制為<strong>int</strong>型態的數值，系統內會嘗試轉換型態，預設數值<strong>6</strong></td>
+<td><code>season_id</code>: <strong>賽季編號</strong>，限制為<strong>string</strong>型態的字串，<font color='#f76560'><strong>必填</strong></font><br> <code>loft_id</code>: <strong>舍號</strong>，限制為<strong>string</strong>型態的字串，<font color='#f76560'><strong>必填</strong></font><br> <code>feet_number</code>: <strong>腳環編號</strong>，限制為<strong>string</strong>型態的字串，<font color='#f76560'><strong>必填</strong></font><br> <code>folder_path</code>: <strong>建檔資料夾</strong>，限制為<strong>string</strong>型態的字串，<font color='#f76560'><strong>必填</strong></font><br> <code>left_build_num</code>: <strong>左側建檔張數</strong>，限制為<strong>int</strong>型態的數值，系統內會嘗試轉換型態，預設數值<strong>3</strong><br> <code>right_build_num</code>: <strong>右側建檔張數</strong>，限制為<strong>int</strong>型態的數值，系統內會嘗試轉換型態，預設數值<strong>3</strong><br><br> <font color='#f76560'><strong>注意!!</strong></font> 此處還會額外檢查 <font color='#f76560'><strong>左側</strong></font>和<font color='#f76560'><strong>右側</strong></font>建檔張數加總是否<font color='#f76560'><strong>大於0</strong></font><br><br></td>
 </tr>
 <tr>
 <td><code>startCompareIris</code></td>
 <td><code>season_id</code>: <strong>賽季編號</strong>，限制為<strong>string</strong>型態的字串，<font color='#f76560'><strong>必填</strong></font><br> <code>loft_id</code>: <strong>舍號</strong>，限制為<strong>string</strong>型態的字串，<font color='#f76560'><strong>必填</strong></font><br> <code>feet_number</code>: <strong>腳環編號</strong>，限制為<strong>string</strong>型態的字串，<font color='#f76560'><strong>必填</strong></font><br> <code>folder_path</code>: <strong>建檔資料夾</strong>，限制為<strong>string</strong>型態的字串，<font color='#f76560'><strong>必填</strong></font><br> <code>threshold</code>: <strong>比對門檻值</strong>，限制為<strong>float</strong>型態的數值，系統內會嘗試轉換型態，傳入區間限制<strong>0.30 ~ 0.50</strong>，預設數值<strong>0.35</strong>，<font color='#f76560'><strong>數值越低越嚴格</strong></font><br> <code>compare_times</code>: <strong>要比對的次數</strong>，限制為<strong>int</strong>型態的數值，系統內會嘗試轉換型態，傳入區間限制<strong> &gt;= 1 </strong>，預設數值<strong>10</strong><br> <code>need_save</code>: <strong>是否儲存比對通過的結果</strong>，限制為<strong>boolean</strong></td>
 </tr>
 <tr>
-<td><code>setFocusCamera</code></td>
-<td><code>camera_src</code>: <strong>要指定的camera來源</strong>，要求系統只能使用畫面上左側或是右側的鏡頭<br> 限制只能傳入<strong>left</strong>, <strong>right</strong> 這兩個<strong>string</strong>字串，預設數值<strong>right</strong></td>
+<td><code>setCompareFocusCamera</code></td>
+<td><code>camera_src</code>: <strong>要指定的camera來源</strong>，要求系統辨識時只能使用畫面上左側或是右側的鏡頭<br> 限制只能傳入<strong>left</strong>, <strong>right</strong> 這兩個<strong>string</strong>字串，預設數值<strong>right</strong></td>
 </tr>
 </tbody>
 </table>
