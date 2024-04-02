@@ -417,7 +417,7 @@ namespace WinFormsWithNamesPipe
                                 Action = "openCamera",
                                 Data = new
                                 {
-                                    use_single_camera_mode = openCameraParamComboBox.SelectedItem.ToString()
+                                    single_camera_mode = openCameraParamComboBox.SelectedItem.ToString()
                                 }
                             };
                             string message = JsonSerializer.Serialize(operation);
