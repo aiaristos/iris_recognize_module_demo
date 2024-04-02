@@ -58,6 +58,7 @@
             rightBuildNum = new NumericUpDown();
             compareFocusOnLeftBtn = new Button();
             compareFocusOnRightBtn = new Button();
+            openCameraParamComboBox = new ComboBox();
             ((System.ComponentModel.ISupportInitialize)leftBuildNum).BeginInit();
             ((System.ComponentModel.ISupportInitialize)rightBuildNum).BeginInit();
             SuspendLayout();
@@ -170,7 +171,7 @@
             // openCameraBtn
             // 
             openCameraBtn.Font = new Font("Microsoft JhengHei UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 136);
-            openCameraBtn.Location = new Point(248, 78);
+            openCameraBtn.Location = new Point(233, 78);
             openCameraBtn.Margin = new Padding(2);
             openCameraBtn.Name = "openCameraBtn";
             openCameraBtn.Size = new Size(153, 37);
@@ -182,7 +183,7 @@
             // closeCameraBtn
             // 
             closeCameraBtn.Font = new Font("Microsoft JhengHei UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 136);
-            closeCameraBtn.Location = new Point(445, 78);
+            closeCameraBtn.Location = new Point(535, 78);
             closeCameraBtn.Margin = new Padding(2);
             closeCameraBtn.Name = "closeCameraBtn";
             closeCameraBtn.Size = new Size(153, 37);
@@ -377,11 +378,21 @@
             compareFocusOnRightBtn.UseVisualStyleBackColor = true;
             compareFocusOnRightBtn.Click += compareFocusOnRightBtn_Click;
             // 
+            // openCameraParamComboBox
+            // 
+            openCameraParamComboBox.FormattingEnabled = true;
+            openCameraParamComboBox.Items.AddRange(new object[] { "disable", "left", "right" });
+            openCameraParamComboBox.Location = new Point(391, 86);
+            openCameraParamComboBox.Name = "openCameraParamComboBox";
+            openCameraParamComboBox.Size = new Size(116, 25);
+            openCameraParamComboBox.TabIndex = 51;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(8F, 17F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1447, 628);
+            Controls.Add(openCameraParamComboBox);
             Controls.Add(compareFocusOnRightBtn);
             Controls.Add(compareFocusOnLeftBtn);
             Controls.Add(rightBuildNum);
@@ -416,6 +427,7 @@
             Name = "Form1";
             Text = "Form1";
             FormClosed += Form1_Closing;
+            Load += Form1_Load;
             ((System.ComponentModel.ISupportInitialize)leftBuildNum).EndInit();
             ((System.ComponentModel.ISupportInitialize)rightBuildNum).EndInit();
             ResumeLayout(false);
@@ -453,5 +465,6 @@
         private NumericUpDown rightBuildNum;
         private Button compareFocusOnLeftBtn;
         private Button compareFocusOnRightBtn;
+        private ComboBox openCameraParamComboBox;
     }
 }

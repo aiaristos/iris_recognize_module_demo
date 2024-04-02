@@ -123,7 +123,15 @@ namespace WinFormsWithNamesPipe
                         sw.WriteLine(message);
 
                         // 等待Python應用程式回傳訊息
-                        sr.ReadLine();
+                        string result = sr.ReadLine();
+                        RecivedResult recivedResult = JsonSerializer.Deserialize<RecivedResult>(result);
+
+                        while (recivedResult.Action != "closeProgram")
+                        {
+                            // 接收來自Python的資料
+                            result = sr.ReadLine();
+                            recivedResult = JsonSerializer.Deserialize<RecivedResult>(result);
+                        }
 
                         // 確保進程存在且尚未退出
                         if (pythonProcess != null && !pythonProcess.HasExited)
@@ -407,12 +415,31 @@ namespace WinFormsWithNamesPipe
                             Operation operation = new Operation
                             {
                                 Action = "openCamera",
-                                Data = new { }
+                                Data = new
+                                {
+                                    use_single_camera_mode = openCameraParamComboBox.SelectedItem.ToString()
+                                }
                             };
                             string message = JsonSerializer.Serialize(operation);
 
                             // 執行指令
                             sw.WriteLine(message);
+
+                            // 等待Python應用程式回傳訊息
+                            string result = sr.ReadLine();
+                            RecivedResult recivedResult = JsonSerializer.Deserialize<RecivedResult>(result);
+
+                            while (recivedResult.Action != "openCamera")
+                            {
+                                // 接收來自Python的資料
+                                result = sr.ReadLine();
+                                recivedResult = JsonSerializer.Deserialize<RecivedResult>(result);
+                            }
+
+                            if (recivedResult.Status == "error")
+                            {
+                                MessageBox.Show(recivedResult.Message, recivedResult.Status, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
                         }
                     }
                     catch (Exception ex)
@@ -455,18 +482,37 @@ namespace WinFormsWithNamesPipe
                     using (StreamWriter sw = new StreamWriter(pipeClient, Encoding.UTF8, -1, leaveOpen: true))
                     using (StreamReader sr = new StreamReader(pipeClient, Encoding.UTF8, true, -1, leaveOpen: true))
                     {
+                        sw.AutoFlush = true;
+
                         // 將資料組成json格式
                         // action: openCamera
                         Operation operation = new Operation
                         {
                             Action = "openCamera",
-                            Data = new {
-                                single_camera_mode = "disable"
+                            Data = new
+                            {
+                                single_camera_mode = openCameraParamComboBox.SelectedItem.ToString()
                             }
                         };
                         string message = JsonSerializer.Serialize(operation);
 
                         sw.WriteLine(message);
+
+                        // 等待Python應用程式回傳訊息
+                        string result = sr.ReadLine();
+                        RecivedResult recivedResult = JsonSerializer.Deserialize<RecivedResult>(result);
+
+                        while (recivedResult.Action != "openCamera")
+                        {
+                            // 接收來自Python的資料
+                            result = sr.ReadLine();
+                            recivedResult = JsonSerializer.Deserialize<RecivedResult>(result);
+                        }
+
+                        if (recivedResult.Status == "error")
+                        {
+                            MessageBox.Show(recivedResult.Message, recivedResult.Status, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
                     }
                 }
                 catch (IOException ex)
@@ -504,6 +550,8 @@ namespace WinFormsWithNamesPipe
                     using (StreamWriter sw = new StreamWriter(pipeClient, Encoding.UTF8, -1, leaveOpen: true))
                     using (StreamReader sr = new StreamReader(pipeClient, Encoding.UTF8, true, -1, leaveOpen: true))
                     {
+                        sw.AutoFlush = true;
+
                         // 將資料組成json格式
                         // action: closeCamera
                         Operation operation = new Operation
@@ -514,6 +562,22 @@ namespace WinFormsWithNamesPipe
                         string message = JsonSerializer.Serialize(operation);
 
                         sw.WriteLine(message);
+
+                        // 等待Python應用程式回傳訊息
+                        string result = sr.ReadLine();
+                        RecivedResult recivedResult = JsonSerializer.Deserialize<RecivedResult>(result);
+
+                        while (recivedResult.Action != "closeCamera")
+                        {
+                            // 接收來自Python的資料
+                            result = sr.ReadLine();
+                            recivedResult = JsonSerializer.Deserialize<RecivedResult>(result);
+                        }
+
+                        if (recivedResult.Status == "error")
+                        {
+                            MessageBox.Show(recivedResult.Message, recivedResult.Status, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
                     }
                 }
                 catch (IOException ex)
@@ -719,6 +783,8 @@ namespace WinFormsWithNamesPipe
                     using (StreamWriter sw = new StreamWriter(pipeClient, Encoding.UTF8, -1, leaveOpen: true))
                     using (StreamReader sr = new StreamReader(pipeClient, Encoding.UTF8, true, -1, leaveOpen: true))
                     {
+                        sw.AutoFlush = true;
+
                         // 將資料組成json格式
                         // action: setFocusCamera
                         Operation operation = new Operation
@@ -732,6 +798,22 @@ namespace WinFormsWithNamesPipe
                         string message = JsonSerializer.Serialize(operation);
 
                         sw.WriteLine(message);
+
+                        // 等待Python應用程式回傳訊息
+                        string result = sr.ReadLine();
+                        RecivedResult recivedResult = JsonSerializer.Deserialize<RecivedResult>(result);
+
+                        while (recivedResult.Action != "setCompareFocusCamera")
+                        {
+                            // 接收來自Python的資料
+                            result = sr.ReadLine();
+                            recivedResult = JsonSerializer.Deserialize<RecivedResult>(result);
+                        }
+
+                        if (recivedResult.Status == "error")
+                        {
+                            MessageBox.Show(recivedResult.Message, recivedResult.Status, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
                     }
                 }
                 catch (IOException ex)
@@ -769,6 +851,8 @@ namespace WinFormsWithNamesPipe
                     using (StreamWriter sw = new StreamWriter(pipeClient, Encoding.UTF8, -1, leaveOpen: true))
                     using (StreamReader sr = new StreamReader(pipeClient, Encoding.UTF8, true, -1, leaveOpen: true))
                     {
+                        sw.AutoFlush = true;
+
                         // 將資料組成json格式
                         // action: setFocusCamera
                         Operation operation = new Operation
@@ -782,6 +866,22 @@ namespace WinFormsWithNamesPipe
                         string message = JsonSerializer.Serialize(operation);
 
                         sw.WriteLine(message);
+
+                        // 等待Python應用程式回傳訊息
+                        string result = sr.ReadLine();
+                        RecivedResult recivedResult = JsonSerializer.Deserialize<RecivedResult>(result);
+
+                        while (recivedResult.Action != "setCompareFocusCamera")
+                        {
+                            // 接收來自Python的資料
+                            result = sr.ReadLine();
+                            recivedResult = JsonSerializer.Deserialize<RecivedResult>(result);
+                        }
+
+                        if (recivedResult.Status == "error")
+                        {
+                            MessageBox.Show(recivedResult.Message, recivedResult.Status, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
                     }
                 }
                 catch (IOException ex)
@@ -798,6 +898,12 @@ namespace WinFormsWithNamesPipe
                     break;
                 }
             }
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            // 將openCameraParamComboBox 預設值設為 "disable"
+            openCameraParamComboBox.SelectedIndex = 0;
         }
     }
 }
