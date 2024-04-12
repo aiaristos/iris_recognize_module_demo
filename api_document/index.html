@@ -399,12 +399,22 @@
 <p>更多的使用範例，請參見我們的<a href="python_api.html">API參考文檔</a>。</p>
 <p>載入、建檔與比對結果的接收請參見<a href="response_message.html">載入/建檔/比對回傳格式文檔</a></p>
 <h1 id="api">API 變更日誌</h1>
-<h2 id="vbeta20240402-2024-04-02">[v.beta.2024.04.02] - 2024-04-02</h2>
+<h2 id="vbeta20240412-2024-04-12">[v.beta.2024.04.12] - 2024-04-12</h2>
 <h3 id="_1">變更</h3>
+<ul>
+<li>新增了<a href="python_api.html#_9">左右翻轉攝影機API</a> <code>flipCamera</code>，可傳入camera_src = 'left' or camera_src = 'right' 來決定要翻轉的鏡頭對象。</li>
+<li>在 <a href="env.html">env</a> 新增了左右鏡頭各自的flip 設定，方便在程式下次開啟時自動翻轉鏡頭。<font color="red"><strong>程式重啟後生效</strong></font></li>
+<li>新增了<strong>建檔提示畫面</strong>, <strong>建檔進度條</strong></li>
+<li>新增了<a href="python_api.html#_10">關閉建檔完成提示API</a> <code>closeHint</code>，用於關閉建檔提示。</li>
+<li>新增了<a href="python_api.html#_11">隱藏建檔進度條API</a> <code>closeProgressbar</code>, 用於以外部關閉建檔的進度條。</li>
+<li>將建檔擷取的影像以及分析檔，在該檔名前面加上<strong>L-</strong>, <strong>R-</strong> 來區分是由左側還是右側的鏡頭所產生的檔案。</li>
+</ul>
+<h2 id="vbeta20240402-2024-04-02">[v.beta.2024.04.02] - 2024-04-02</h2>
+<h3 id="_2">變更</h3>
 <ul>
 <li>新增了主動回傳載入完成的訊息功能到您的Name Pipe Server 中，請參見<a href="response_message.html#_2">載入任務回傳結果</a></li>
 <li>在所有<a href="python_api.html">API回傳格式</a>中都新增 <code>Action</code> 欄位，方便去辨別此回傳是由哪個Action觸發的</li>
-<li>調整了 <a href="python_api.html#_10">開始虹膜建檔API</a> <code>startBuildIris</code><ul>
+<li>調整了 <a href="python_api.html#_13">開始虹膜建檔API</a> <code>startBuildIris</code><ul>
 <li>現在會判斷left_build_num/right_build_num 是否為0來決定要關閉的鏡頭窗口，可更方便指定左右各自的建檔數量。<ul>
 <li>移除了build_num 欄位</li>
 <li>新增了left_build_num 欄位</li>
@@ -414,7 +424,7 @@
 <li>現在會自動判斷左右兩側的建檔數量加總是否為<strong>0</strong>，如果是，則不予建檔並回傳錯誤訊息</li>
 </ul>
 </li>
-<li>將原 <code>set_focus_camera</code> API 調整為 <code>set_compare_focus_camera</code> <a href="python_api.html#_15">API</a><ul>
+<li>將原 <code>set_focus_camera</code> API 調整為 <code>set_compare_focus_camera</code> <a href="python_api.html#_18">API</a><ul>
 <li>移動到<a href="python_api_detail.html#3">比對模式</a>底下，讓比對時可以指定只使用單一邊的鏡頭去做比對</li>
 </ul>
 </li>
@@ -423,7 +433,7 @@
 <li>移除了<a href="env.html">env</a>中的theme設定，只保留會使用的單一主題</li>
 </ul>
 <h2 id="vbeta20240320-2024-03-20">[v.beta.2024.03.20] - 2024-03-20</h2>
-<h3 id="_2">變更</h3>
+<h3 id="_3">變更</h3>
 <ul>
 <li>新增了比對虹膜的相關API</li>
 <li>
@@ -443,7 +453,7 @@
 <li>新增了<a href="python_api_detail.html">API詳細應用說明</a> ，裡面針對API的一些應用做了相對應的補充</li>
 </ul>
 <h2 id="vbeta20240112-2024-01-12">[v.beta.2024.01.12] - 2024-01-12</h2>
-<h3 id="_3">變更</h3>
+<h3 id="_4">變更</h3>
 <ul>
 <li>配合嵌入式做出程式內調整<ul>
 <li>為了讓.Net 可以正確獲取python 程式的MainWindowHandle，現已預設<font color="red"><strong>關閉</strong></font>攝影機的自動開啟。

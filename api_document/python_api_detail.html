@@ -607,7 +607,7 @@
 <tbody>
 <tr>
 <td>正常模式</td>
-<td><code>setPosition</code><br><code>setFrameSize</code><br><code>setActivated</code><br><code>setMinimized</code><br><code>closeProgram</code><br><code>openCamera</code><br><code>closeCamera</code><br><code>startBuildIris</code>: <strong><font color='#4051b5'> 呼叫後會進入建檔模式 </font></strong><br><code>startCompareIris</code>: <strong><font color='#4051b5'> 呼叫後會進入比對模式 </font></strong></td>
+<td><code>setPosition</code><br><code>setFrameSize</code><br><code>setActivated</code><br><code>setMinimized</code><br><code>closeProgram</code><br><code>openCamera</code><br><code>closeCamera</code><br><code>flipCamera</code><br><code>closeHint</code><br><code>closeProgressbar</code><br><code>startBuildIris</code>: <strong><font color='#4051b5'> 呼叫後會進入建檔模式 </font></strong><br><code>startCompareIris</code>: <strong><font color='#4051b5'> 呼叫後會進入比對模式 </font></strong></td>
 </tr>
 <tr>
 <td>建檔模式</td>
@@ -647,6 +647,14 @@
 <tr>
 <td><code>openCamera</code></td>
 <td><code>single_camera_mode</code>: <strong>選擇採用的單鏡頭模式</strong>，可針對緊急情況下調整到單鏡頭模式<br> 限制只能傳入<strong>left</strong>, <strong>right</strong>，和<strong>disable</strong> 這三個<strong>string</strong>字串，預設數值<strong>disable</strong> <br><br> <strong>disable</strong>: 一般雙鏡頭模式 <br> <strong>left</strong>, <strong>right</strong>: 只開啟左或右側的鏡頭</td>
+</tr>
+<tr>
+<td><code>flipCamera</code></td>
+<td><code>camera_src</code>: <strong>要指定的camera來源</strong>，要求系統去翻轉的鏡頭目標<br> 限制只能傳入<strong>left</strong>, <strong>right</strong> 限制為<strong>string</strong>型態的字串，<font color='#f76560'><strong>必填</strong></td>
+</tr>
+<tr>
+<td><code>closeProgressbar</code></td>
+<td><code>camera_src</code>: <strong>要指定的camera來源</strong>，要求系統去關閉哪個鏡頭底下的進度條<br> 限制只能傳入<strong>left</strong>, <strong>right</strong>, <strong>all</strong> 這三個<strong>string</strong>字串，預設數值<strong>all</strong></td>
 </tr>
 <tr>
 <td><code>startBuildIris</code></td>
