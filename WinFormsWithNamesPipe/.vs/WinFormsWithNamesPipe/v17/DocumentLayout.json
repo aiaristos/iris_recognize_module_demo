@@ -3,12 +3,12 @@
   "WorkspaceRootPath": "C:\\Users\\User\\Downloads\\repos\\iris_recognize_module_demo\\WinFormsWithNamesPipe\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{9CF25949-3BCF-43C2-A234-E84DF5A46091}|WinFormsWithNamesPipe\\WinFormsWithNamesPipe.csproj|c:\\users\\user\\downloads\\repos\\iris_recognize_module_demo\\winformswithnamespipe\\winformswithnamespipe\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{9CF25949-3BCF-43C2-A234-E84DF5A46091}|WinFormsWithNamesPipe\\WinFormsWithNamesPipe.csproj|solutionrelative:winformswithnamespipe\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{9CF25949-3BCF-43C2-A234-E84DF5A46091}|WinFormsWithNamesPipe\\WinFormsWithNamesPipe.csproj|c:\\users\\user\\downloads\\repos\\iris_recognize_module_demo\\winformswithnamespipe\\winformswithnamespipe\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{9CF25949-3BCF-43C2-A234-E84DF5A46091}|WinFormsWithNamesPipe\\WinFormsWithNamesPipe.csproj|solutionrelative:winformswithnamespipe\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{9CF25949-3BCF-43C2-A234-E84DF5A46091}|WinFormsWithNamesPipe\\WinFormsWithNamesPipe.csproj|C:\\Users\\User\\Downloads\\repos\\iris_recognize_module_demo\\WinFormsWithNamesPipe\\winformswithnamespipe\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{9CF25949-3BCF-43C2-A234-E84DF5A46091}|WinFormsWithNamesPipe\\WinFormsWithNamesPipe.csproj|solutionrelative:winformswithnamespipe\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+      "AbsoluteMoniker": "D:0:0:{9CF25949-3BCF-43C2-A234-E84DF5A46091}|WinFormsWithNamesPipe\\WinFormsWithNamesPipe.csproj|C:\\Users\\User\\Downloads\\repos\\iris_recognize_module_demo\\WinFormsWithNamesPipe\\winformswithnamespipe\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9CF25949-3BCF-43C2-A234-E84DF5A46091}|WinFormsWithNamesPipe\\WinFormsWithNamesPipe.csproj|solutionrelative:winformswithnamespipe\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{9CF25949-3BCF-43C2-A234-E84DF5A46091}|WinFormsWithNamesPipe\\WinFormsWithNamesPipe.csproj|C:\\Users\\User\\Downloads\\repos\\iris_recognize_module_demo\\WinFormsWithNamesPipe\\winformswithnamespipe\\service\\namedpipeserver.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -30,7 +30,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 5,
+          "SelectedChildIndex": 6,
           "Children": [
             {
               "$type": "Bookmark",
@@ -61,7 +61,8 @@
               "RelativeToolTip": "WinFormsWithNamesPipe\\Form1.Designer.cs",
               "ViewState": "AQIAAHkBAAAAAAAAAAAAAIMBAAAyAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-01-08T05:36:15.854Z"
+              "WhenOpened": "2024-01-08T05:36:15.854Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -71,33 +72,34 @@
               "RelativeDocumentMoniker": "WinFormsWithNamesPipe\\service\\NamedPipeServer.cs",
               "ToolTip": "C:\\Users\\User\\Downloads\\repos\\iris_recognize_module_demo\\WinFormsWithNamesPipe\\WinFormsWithNamesPipe\\service\\NamedPipeServer.cs",
               "RelativeToolTip": "WinFormsWithNamesPipe\\service\\NamedPipeServer.cs",
-              "ViewState": "AQIAADsAAAAAAAAAAAAAADoAAABIAAAA",
+              "ViewState": "AQIAACwAAAAAAAAAAAAAADoAAABIAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-01-08T05:36:15.872Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "Form1.cs",
               "DocumentMoniker": "C:\\Users\\User\\Downloads\\repos\\iris_recognize_module_demo\\WinFormsWithNamesPipe\\WinFormsWithNamesPipe\\Form1.cs",
               "RelativeDocumentMoniker": "WinFormsWithNamesPipe\\Form1.cs",
               "ToolTip": "C:\\Users\\User\\Downloads\\repos\\iris_recognize_module_demo\\WinFormsWithNamesPipe\\WinFormsWithNamesPipe\\Form1.cs",
               "RelativeToolTip": "WinFormsWithNamesPipe\\Form1.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA4EAAARAAAA",
+              "ViewState": "AQIAAGwBAAAAAAAAAAAAANADAABJAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-01-08T05:36:16.741Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "Form1.cs [\u8A2D\u8A08]",
               "DocumentMoniker": "C:\\Users\\User\\Downloads\\repos\\iris_recognize_module_demo\\WinFormsWithNamesPipe\\WinFormsWithNamesPipe\\Form1.cs",
               "RelativeDocumentMoniker": "WinFormsWithNamesPipe\\Form1.cs",
               "ToolTip": "C:\\Users\\User\\Downloads\\repos\\iris_recognize_module_demo\\WinFormsWithNamesPipe\\WinFormsWithNamesPipe\\Form1.cs [\u8A2D\u8A08]",
               "RelativeToolTip": "WinFormsWithNamesPipe\\Form1.cs [\u8A2D\u8A08]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-01-08T05:36:16.879Z"
+              "WhenOpened": "2024-01-08T05:36:16.879Z",
+              "EditorCaption": " [\u8A2D\u8A08]"
             }
           ]
         }

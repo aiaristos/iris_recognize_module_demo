@@ -136,7 +136,7 @@
             // 
             cameraPanel.Location = new Point(729, 88);
             cameraPanel.Name = "cameraPanel";
-            cameraPanel.Size = new Size(705, 564);
+            cameraPanel.Size = new Size(953, 564);
             cameraPanel.TabIndex = 25;
             // 
             // filePathLabel
@@ -417,7 +417,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 17F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1447, 676);
+            ClientSize = new Size(1694, 676);
             Controls.Add(flipRightCameraBtn);
             Controls.Add(flipLeftCameraBtn);
             Controls.Add(openCameraParamComboBox);
