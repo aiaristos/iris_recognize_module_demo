@@ -996,7 +996,7 @@ namespace WinFormsWithNamesPipe
                         sw.AutoFlush = true;
 
                         // 將資料組成json格式
-                        // action: setFocusCamera
+                        // action: flipCamera
                         Operation operation = new Operation
                         {
                             Action = "flipCamera",
@@ -1014,6 +1014,71 @@ namespace WinFormsWithNamesPipe
                         RecivedResult recivedResult = JsonSerializer.Deserialize<RecivedResult>(result);
 
                         while (recivedResult.Action != "flipCamera")
+                        {
+                            // 接收來自Python的資料
+                            result = sr.ReadLine();
+                            recivedResult = JsonSerializer.Deserialize<RecivedResult>(result);
+                        }
+
+                        if (recivedResult.Status == "error")
+                        {
+                            MessageBox.Show(recivedResult.Message, recivedResult.Status, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
+                }
+                catch (IOException ex)
+                {
+                    needRetry = true;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+
+                if (!needRetry)
+                {
+                    break;
+                }
+            }
+        }
+
+        private void reloadEnvSettingBtn_Click(object sender, EventArgs e)
+        {
+            while (true)
+            {
+                needRetry = false;
+                try
+                {
+                    if (!CheckPipeClientConnection())
+                    {
+                        // 如果沒有連接，直接結束此方法
+                        // 顯示錯誤訊息
+                        MessageBox.Show("NamedPipe 連線失敗", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                        return;
+                    }
+
+                    using (StreamWriter sw = new StreamWriter(pipeClient, Encoding.UTF8, -1, leaveOpen: true))
+                    using (StreamReader sr = new StreamReader(pipeClient, Encoding.UTF8, true, -1, leaveOpen: true))
+                    {
+                        sw.AutoFlush = true;
+
+                        // 將資料組成json格式
+                        // action: reloadEnvSettings
+                        Operation operation = new Operation
+                        {
+                            Action = "reloadEnvSettings",
+                            Data = new {}
+                        };
+                        string message = JsonSerializer.Serialize(operation);
+
+                        sw.WriteLine(message);
+
+                        // 等待Python應用程式回傳訊息
+                        string result = sr.ReadLine();
+                        RecivedResult recivedResult = JsonSerializer.Deserialize<RecivedResult>(result);
+
+                        while (recivedResult.Action != "reloadEnvSettings")
                         {
                             // 接收來自Python的資料
                             result = sr.ReadLine();

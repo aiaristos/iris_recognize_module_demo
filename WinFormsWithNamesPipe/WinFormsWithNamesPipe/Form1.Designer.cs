@@ -61,6 +61,7 @@
             openCameraParamComboBox = new ComboBox();
             flipLeftCameraBtn = new Button();
             flipRightCameraBtn = new Button();
+            reloadEnvSettingBtn = new Button();
             ((System.ComponentModel.ISupportInitialize)leftBuildNum).BeginInit();
             ((System.ComponentModel.ISupportInitialize)rightBuildNum).BeginInit();
             SuspendLayout();
@@ -143,7 +144,7 @@
             // 
             filePathLabel.AutoSize = true;
             filePathLabel.Font = new Font("Microsoft JhengHei UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 136);
-            filePathLabel.Location = new Point(234, 40);
+            filePathLabel.Location = new Point(389, 40);
             filePathLabel.Margin = new Padding(2, 0, 2, 0);
             filePathLabel.Name = "filePathLabel";
             filePathLabel.Size = new Size(77, 20);
@@ -152,7 +153,7 @@
             // 
             // textBox1
             // 
-            textBox1.Location = new Point(328, 36);
+            textBox1.Location = new Point(483, 36);
             textBox1.Name = "textBox1";
             textBox1.Size = new Size(726, 24);
             textBox1.TabIndex = 27;
@@ -413,11 +414,24 @@
             flipRightCameraBtn.UseVisualStyleBackColor = true;
             flipRightCameraBtn.Click += flipRightCameraBtn_Click;
             // 
+            // reloadEnvSettingBtn
+            // 
+            reloadEnvSettingBtn.Font = new Font("Microsoft JhengHei UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 136);
+            reloadEnvSettingBtn.Location = new Point(212, 32);
+            reloadEnvSettingBtn.Margin = new Padding(2);
+            reloadEnvSettingBtn.Name = "reloadEnvSettingBtn";
+            reloadEnvSettingBtn.Size = new Size(153, 37);
+            reloadEnvSettingBtn.TabIndex = 54;
+            reloadEnvSettingBtn.Text = "重新載入ENV";
+            reloadEnvSettingBtn.UseVisualStyleBackColor = true;
+            reloadEnvSettingBtn.Click += reloadEnvSettingBtn_Click;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(8F, 17F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1694, 676);
+            Controls.Add(reloadEnvSettingBtn);
             Controls.Add(flipRightCameraBtn);
             Controls.Add(flipLeftCameraBtn);
             Controls.Add(openCameraParamComboBox);
@@ -496,5 +510,6 @@
         private ComboBox openCameraParamComboBox;
         private Button flipLeftCameraBtn;
         private Button flipRightCameraBtn;
+        private Button reloadEnvSettingBtn;
     }
 }

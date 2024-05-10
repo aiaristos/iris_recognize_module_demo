@@ -400,6 +400,15 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#env" class="md-nav__link">
+    <span class="md-ellipsis">
+      重新載入env設定
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#_10" class="md-nav__link">
     <span class="md-ellipsis">
       關閉建檔完成提示
@@ -683,6 +692,15 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#env" class="md-nav__link">
+    <span class="md-ellipsis">
+      重新載入env設定
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#_10" class="md-nav__link">
     <span class="md-ellipsis">
       關閉建檔完成提示
@@ -809,6 +827,7 @@
 <li><a href="#module.main_module.MainWindow.flip_camera">左右翻轉攝影機</a></li>
 <li><a href="#module.main_module.MainWindow.close_hint">關閉建檔完成提示</a></li>
 <li><a href="#module.main_module.MainWindow.hide_build_progressbar_by_data">隱藏建檔進度條</a></li>
+<li><a href="#module.main_module.MainWindow.reload_env_settings">重新載入env設定</a></li>
 <li><a href="#module.main_module.MainWindow.start_build_iris_task">開始虹膜建檔</a></li>
 <li><a href="#module.main_module.MainWindow.stop_build_iris_task">中止虹膜建檔</a></li>
 <li><a href="#module.main_module.MainWindow.start_compare_iris_task">開始虹膜比對</a></li>
@@ -1849,6 +1868,125 @@ single_camera_mode: 要採用的單鏡頭模式<br>
 </span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">        </span><span class="nt">&quot;StatusCode&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
 </span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">        </span><span class="nt">&quot;Action&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;flipCamera&quot;</span><span class="p">,</span>
 </span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">        </span><span class="nt">&quot;Message&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Action &#39;flipCamera&#39; executed successfully&quot;</span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">    </span><span class="p">}</span>
+</span></code></pre></div>
+
+  </div>
+
+</div><h3 id="env"><strong><code>重新載入env設定</code></strong></h3>
+
+
+
+<div class="doc doc-object doc-function">
+
+
+
+
+<a id="module.main_module.MainWindow.reload_env_settings"></a>
+  <div class="doc doc-contents first">
+  
+      <p>重新載入env的設定</p>
+
+
+
+  <p><strong>Attributes:</strong></p>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr>
+          <td><code><span title="module.main_module.MainWindow.reload_env_settings.Action">Action</span></code></td>
+          <td>
+                <code>str</code>
+          </td>
+          <td>
+            <div class="doc-md-description">
+              <p>執行動作，reloadEnvSettings</p>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td><code><span title="module.main_module.MainWindow.reload_env_settings.Data">Data</span></code></td>
+          <td>
+                <code>dict</code>
+          </td>
+          <td>
+            <div class="doc-md-description">
+              <p>傳入的資料</p>
+            </div>
+          </td>
+        </tr>
+    </tbody>
+  </table>
+      <div class="language-json highlight"><span class="filename">Request Sample</span><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="w">    </span><span class="p">{</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">        </span><span class="nt">&quot;Action&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;reloadEnvSettings&quot;</span><span class="p">,</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">        </span><span class="nt">&quot;Data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">    </span><span class="p">}</span>
+</span></code></pre></div>
+
+
+
+  <p><strong>Returns:</strong></p>
+  <table>
+    <thead>
+      <tr>
+<th>Name</th>        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr>
+<td><code>Status</code></td>          <td>
+                <code>str</code>
+          </td>
+          <td>
+            <div class="doc-md-description">
+              <p>執行狀態，success or error</p>
+            </div>
+          </td>
+        </tr>
+        <tr>
+<td><code>StatusCode</code></td>          <td>
+                <code>int</code>
+          </td>
+          <td>
+            <div class="doc-md-description">
+              <p>執行狀態碼，0 or 1，0為成功，1為失敗</p>
+            </div>
+          </td>
+        </tr>
+        <tr>
+<td><code>Action</code></td>          <td>
+                <code>str</code>
+          </td>
+          <td>
+            <div class="doc-md-description">
+              <p>執行動作</p>
+            </div>
+          </td>
+        </tr>
+        <tr>
+<td><code>Message</code></td>          <td>
+                <code>str</code>
+          </td>
+          <td>
+            <div class="doc-md-description">
+              <p>執行訊息</p>
+            </div>
+          </td>
+        </tr>
+    </tbody>
+  </table>
+      <div class="language-json highlight"><span class="filename">Response Sample</span><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="w">    </span><span class="p">{</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">        </span><span class="nt">&quot;Status&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;success&quot;</span><span class="p">,</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">        </span><span class="nt">&quot;StatusCode&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">        </span><span class="nt">&quot;Action&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;reloadEnvSettings&quot;</span><span class="p">,</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">        </span><span class="nt">&quot;Message&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Action &#39;reloadEnvSettings&#39; executed successfully&quot;</span>
 </span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">    </span><span class="p">}</span>
 </span></code></pre></div>
 
