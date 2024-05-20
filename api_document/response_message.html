@@ -385,7 +385,25 @@
         <li class="md-nav__item">
   <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
+      虹膜建檔錯誤回傳
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
       虹膜比對回傳結果
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      虹膜比對錯誤回傳
     </span>
   </a>
   
@@ -466,7 +484,25 @@
         <li class="md-nav__item">
   <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
+      虹膜建檔錯誤回傳
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
       虹膜比對回傳結果
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      虹膜比對錯誤回傳
     </span>
   </a>
   
@@ -495,7 +531,9 @@
 <ul>
 <li><a href="#docstring.response_message.ResponseMessage.loading_task_complete">載入任務回傳結果</a></li>
 <li><a href="#docstring.response_message.ResponseMessage.build_iris_result">虹膜建檔回傳結果</a></li>
+<li><a href="#docstring.response_message.ResponseMessage.build_iris_error">虹膜建檔錯誤回傳</a></li>
 <li><a href="#docstring.response_message.ResponseMessage.compare_iris_result">虹膜比對回傳結果</a></li>
+<li><a href="#docstring.response_message.ResponseMessage.compare_iris_error">虹膜比對錯誤回傳</a></li>
 </ul>
 <hr />
 <h2 id="_2"><strong><code>載入任務回傳結果</code></strong></h2>
@@ -778,7 +816,97 @@
 
   </div>
 
-</div><h2 id="_4"><strong><code>虹膜比對回傳結果</code></strong></h2>
+</div><h2 id="_4"><strong><code>虹膜建檔錯誤回傳</code></strong></h2>
+<p><strong><font color='dark-red'>! 只在意外錯誤(尚未歸檔)發生時回傳 </font></strong>
+</p>
+
+
+
+<div class="doc doc-object doc-function">
+
+
+
+
+<a id="docstring.response_message.ResponseMessage.build_iris_error"></a>
+  <div class="doc doc-contents first">
+  
+      <p>執行虹膜建檔失敗時的回傳訊息</p>
+
+
+
+  <p><strong>Returns:</strong></p>
+  <table>
+    <thead>
+      <tr>
+<th>Name</th>        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr>
+<td><code>Status</code></td>          <td>
+                <code>str</code>
+          </td>
+          <td>
+            <div class="doc-md-description">
+              <p>執行狀態，success or error</p>
+            </div>
+          </td>
+        </tr>
+        <tr>
+<td><code>StatusCode</code></td>          <td>
+                <code>int</code>
+          </td>
+          <td>
+            <div class="doc-md-description">
+              <p>執行狀態碼，1為失敗</p>
+            </div>
+          </td>
+        </tr>
+        <tr>
+<td><code>Message</code></td>          <td>
+                <code>str</code>
+          </td>
+          <td>
+            <div class="doc-md-description">
+              <p>執行訊息</p>
+            </div>
+          </td>
+        </tr>
+        <tr>
+<td><code>Action</code></td>          <td>
+                <code>str</code>
+          </td>
+          <td>
+            <div class="doc-md-description">
+              <p>執行動作</p>
+            </div>
+          </td>
+        </tr>
+        <tr>
+<td><code>Data</code></td>          <td>
+                <code>dict</code>
+          </td>
+          <td>
+            <div class="doc-md-description">
+              <p>執行結果</p>
+            </div>
+          </td>
+        </tr>
+    </tbody>
+  </table>
+      <div class="language-json highlight"><span class="filename">Response Sample</span><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="w">    </span><span class="p">{</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">        </span><span class="nt">&quot;Status&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;error&quot;</span><span class="p">,</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">        </span><span class="nt">&quot;StatusCode&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">        </span><span class="nt">&quot;Message&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;錯誤訊息&quot;</span><span class="p">,</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">        </span><span class="nt">&quot;Action&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;build_iris_error&quot;</span><span class="p">,</span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">        </span><span class="nt">&quot;Data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="w">    </span><span class="p">}</span>
+</span></code></pre></div>
+
+  </div>
+
+</div><h2 id="_5"><strong><code>虹膜比對回傳結果</code></strong></h2>
 
 
 
@@ -973,6 +1101,96 @@
 </span><span id="__span-0-16"><a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a><span class="w">            </span><span class="nt">&quot;min_compare_value&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.2</span>
 </span><span id="__span-0-17"><a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a><span class="w">        </span><span class="p">}</span>
 </span><span id="__span-0-18"><a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a><span class="w">    </span><span class="p">}</span>
+</span></code></pre></div>
+
+  </div>
+
+</div><h2 id="_6"><strong><code>虹膜比對錯誤回傳</code></strong></h2>
+<p><strong><font color='dark-red'>! 只在意外錯誤(尚未歸檔)發生時回傳 </font></strong>
+</p>
+
+
+
+<div class="doc doc-object doc-function">
+
+
+
+
+<a id="docstring.response_message.ResponseMessage.compare_iris_error"></a>
+  <div class="doc doc-contents first">
+  
+      <p>執行虹膜比對失敗時的回傳訊息</p>
+
+
+
+  <p><strong>Returns:</strong></p>
+  <table>
+    <thead>
+      <tr>
+<th>Name</th>        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr>
+<td><code>Status</code></td>          <td>
+                <code>str</code>
+          </td>
+          <td>
+            <div class="doc-md-description">
+              <p>執行狀態，success or error</p>
+            </div>
+          </td>
+        </tr>
+        <tr>
+<td><code>StatusCode</code></td>          <td>
+                <code>int</code>
+          </td>
+          <td>
+            <div class="doc-md-description">
+              <p>執行狀態碼，1為失敗</p>
+            </div>
+          </td>
+        </tr>
+        <tr>
+<td><code>Message</code></td>          <td>
+                <code>str</code>
+          </td>
+          <td>
+            <div class="doc-md-description">
+              <p>執行訊息</p>
+            </div>
+          </td>
+        </tr>
+        <tr>
+<td><code>Action</code></td>          <td>
+                <code>str</code>
+          </td>
+          <td>
+            <div class="doc-md-description">
+              <p>執行動作</p>
+            </div>
+          </td>
+        </tr>
+        <tr>
+<td><code>Data</code></td>          <td>
+                <code>dict</code>
+          </td>
+          <td>
+            <div class="doc-md-description">
+              <p>執行結果</p>
+            </div>
+          </td>
+        </tr>
+    </tbody>
+  </table>
+      <div class="language-json highlight"><span class="filename">Response Sample</span><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="w">    </span><span class="p">{</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">        </span><span class="nt">&quot;Status&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;error&quot;</span><span class="p">,</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">        </span><span class="nt">&quot;StatusCode&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">        </span><span class="nt">&quot;Message&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;錯誤訊息&quot;</span><span class="p">,</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">        </span><span class="nt">&quot;Action&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;compare_iris_error&quot;</span><span class="p">,</span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">        </span><span class="nt">&quot;Data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="w">    </span><span class="p">}</span>
 </span></code></pre></div>
 
   </div>
