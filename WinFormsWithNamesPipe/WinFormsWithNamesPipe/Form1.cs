@@ -323,17 +323,24 @@ namespace WinFormsWithNamesPipe
         }
 
         // 更新系統訊息
-        private void UpdateSystemMsgUI(string message)
+        private void UpdateSystemMsgUI(string message, string action)
         {
             // 確保跨執行序的操作安全
             if (InvokeRequired)
             {
-                Invoke(new Action<string>(UpdateSystemMsgUI), message);
+                Invoke(new Action<string, string>(UpdateSystemMsgUI), message, action);
             }
             else
             {
                 // 更新UI
                 systemMsg.Text = message;
+
+                // 如果傳入的action = build_iris_error or compare_iris_error
+                // 則不須後續調整按鈕狀態
+                if (action == "build_iris_error" || action == "compare_iris_error")
+                {
+                    return;
+                }
 
                 // 模擬建檔比對完成，調整按鈕狀態
                 // disabled button

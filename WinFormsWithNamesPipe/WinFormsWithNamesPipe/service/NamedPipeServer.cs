@@ -8,7 +8,7 @@ namespace WinFormsWithNamesPipe.service
     public class NamedPipeServer
     {
         // 用來更新GUI的事件handler
-        public delegate void MessageReceivedHandler(string message);
+        public delegate void MessageReceivedHandler(string message, string action);
         public static event MessageReceivedHandler OnMessageReceived;
 
         public delegate void CompareResultStatusHandler(int statusCode);
@@ -53,7 +53,7 @@ namespace WinFormsWithNamesPipe.service
                                                 "Action: " + recivedResultObj.Action + "\r\n" +
                                                 "Data: " + recivedResultObj.Data + "\r\n";
 
-                                OnMessageReceived?.Invoke(result);
+                                OnMessageReceived?.Invoke(result, recivedResultObj.Action);
 
                                 // 判斷是否傳入的是比對結果
                                 // 如果是，則額外觸發compareResultStatusReceived事件
