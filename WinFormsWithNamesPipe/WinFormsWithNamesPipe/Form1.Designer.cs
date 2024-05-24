@@ -62,6 +62,7 @@
             flipLeftCameraBtn = new Button();
             flipRightCameraBtn = new Button();
             reloadEnvSettingBtn = new Button();
+            useOldMethod = new Button();
             ((System.ComponentModel.ISupportInitialize)leftBuildNum).BeginInit();
             ((System.ComponentModel.ISupportInitialize)rightBuildNum).BeginInit();
             SuspendLayout();
@@ -274,7 +275,7 @@
             // 
             stopCompareIrisBtn.Enabled = false;
             stopCompareIrisBtn.Font = new Font("Microsoft JhengHei UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 136);
-            stopCompareIrisBtn.Location = new Point(363, 371);
+            stopCompareIrisBtn.Location = new Point(353, 371);
             stopCompareIrisBtn.Margin = new Padding(2);
             stopCompareIrisBtn.Name = "stopCompareIrisBtn";
             stopCompareIrisBtn.Size = new Size(153, 37);
@@ -312,7 +313,7 @@
             compareResult.BorderStyle = BorderStyle.None;
             compareResult.Font = new Font("Maple UI", 20.25F, FontStyle.Regular, GraphicsUnit.Point, 128);
             compareResult.ForeColor = SystemColors.Window;
-            compareResult.Location = new Point(549, 402);
+            compareResult.Location = new Point(541, 372);
             compareResult.Name = "compareResult";
             compareResult.Size = new Size(139, 36);
             compareResult.TabIndex = 42;
@@ -372,7 +373,7 @@
             // compareFocusOnRightBtn
             // 
             compareFocusOnRightBtn.Font = new Font("Microsoft JhengHei UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 136);
-            compareFocusOnRightBtn.Location = new Point(363, 431);
+            compareFocusOnRightBtn.Location = new Point(353, 431);
             compareFocusOnRightBtn.Margin = new Padding(2);
             compareFocusOnRightBtn.Name = "compareFocusOnRightBtn";
             compareFocusOnRightBtn.Size = new Size(153, 37);
@@ -426,11 +427,24 @@
             reloadEnvSettingBtn.UseVisualStyleBackColor = true;
             reloadEnvSettingBtn.Click += reloadEnvSettingBtn_Click;
             // 
+            // useOldMethod
+            // 
+            useOldMethod.Font = new Font("Microsoft JhengHei UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 136);
+            useOldMethod.Location = new Point(541, 431);
+            useOldMethod.Margin = new Padding(2);
+            useOldMethod.Name = "useOldMethod";
+            useOldMethod.Size = new Size(153, 37);
+            useOldMethod.TabIndex = 55;
+            useOldMethod.Text = "使用舊方法分析";
+            useOldMethod.UseVisualStyleBackColor = true;
+            useOldMethod.Click += useOldMethod_Click;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(8F, 17F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1694, 676);
+            Controls.Add(useOldMethod);
             Controls.Add(reloadEnvSettingBtn);
             Controls.Add(flipRightCameraBtn);
             Controls.Add(flipLeftCameraBtn);
@@ -511,5 +525,6 @@
         private Button flipLeftCameraBtn;
         private Button flipRightCameraBtn;
         private Button reloadEnvSettingBtn;
+        private Button useOldMethod;
     }
 }

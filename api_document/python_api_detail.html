@@ -430,6 +430,26 @@
   
 
     
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="env_secrect.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    .env.secrect 設定檔說明
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
   </ul>
 </nav>
                   </div>
@@ -611,11 +631,11 @@
 </tr>
 <tr>
 <td>建檔模式</td>
-<td><code>setActivated</code><br><code>setMinimized</code><br><code>closeProgram</code><br><code>stopBuildIris</code>: <strong><font color='#4051b5'> 呼叫後會脫離建檔模式 </font></strong><br><br><strong>建檔完畢後會自動脫離返回正常模式</strong><br></td>
+<td><code>setActivated</code><br><code>setMinimized</code><br><code>closeProgram</code><br><code>setUseNewMethod</code><br><code>stopBuildIris</code>: <strong><font color='#4051b5'> 呼叫後會脫離建檔模式 </font></strong><br><br><strong>建檔完畢後會自動脫離返回正常模式</strong><br></td>
 </tr>
 <tr>
 <td>比對模式</td>
-<td><code>setActivated</code><br><code>setMinimized</code><br><code>closeProgram</code><br><code>setCompareFocusCamera</code><br><code>stopCompareIris</code>: <strong><font color='#4051b5'> 呼叫後會脫離比對模式 </font></strong><br><br><strong>比對完畢後會自動脫離返回正常模式</strong><br></td>
+<td><code>setActivated</code><br><code>setMinimized</code><br><code>closeProgram</code><br><code>setCompareFocusCamera</code><br><code>setUseNewMethod</code><br><code>stopCompareIris</code>: <strong><font color='#4051b5'> 呼叫後會脫離比對模式 </font></strong><br><br><strong>比對完畢後會自動脫離返回正常模式</strong><br></td>
 </tr>
 </tbody>
 </table>
@@ -667,6 +687,10 @@
 <tr>
 <td><code>setCompareFocusCamera</code></td>
 <td><code>camera_src</code>: <strong>要指定的camera來源</strong>，要求系統辨識時只能使用畫面上左側或是右側的鏡頭<br> 限制只能傳入<strong>left</strong>, <strong>right</strong> 這兩個<strong>string</strong>字串，預設數值<strong>right</strong></td>
+</tr>
+<tr>
+<td><code>setUseNewMethod</code></td>
+<td><code>use_new_method</code>: <strong>是否使用新的分析方法進行辨識/比對</strong>，限制為<strong>boolean</strong></td>
 </tr>
 </tbody>
 </table>

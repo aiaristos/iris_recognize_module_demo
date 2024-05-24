@@ -459,13 +459,22 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      設定是否使用新方法
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#_15" class="md-nav__link">
+  <a href="#_16" class="md-nav__link">
     <span class="md-ellipsis">
       虹膜比對設定
     </span>
@@ -475,7 +484,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_16" class="md-nav__link">
+  <a href="#_17" class="md-nav__link">
     <span class="md-ellipsis">
       開始虹膜比對
     </span>
@@ -484,7 +493,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_17" class="md-nav__link">
+  <a href="#_18" class="md-nav__link">
     <span class="md-ellipsis">
       中止虹膜建檔
     </span>
@@ -493,9 +502,18 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_18" class="md-nav__link">
+  <a href="#_19" class="md-nav__link">
     <span class="md-ellipsis">
       專注於特定鏡頭
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_20" class="md-nav__link">
+    <span class="md-ellipsis">
+      設定是否使用新方法
     </span>
   </a>
   
@@ -575,6 +593,26 @@
   
   <span class="md-ellipsis">
     .env 設定檔說明
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="env_secrect.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    .env.secrect 設定檔說明
   </span>
   
 
@@ -751,13 +789,22 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      設定是否使用新方法
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#_15" class="md-nav__link">
+  <a href="#_16" class="md-nav__link">
     <span class="md-ellipsis">
       虹膜比對設定
     </span>
@@ -767,7 +814,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_16" class="md-nav__link">
+  <a href="#_17" class="md-nav__link">
     <span class="md-ellipsis">
       開始虹膜比對
     </span>
@@ -776,7 +823,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_17" class="md-nav__link">
+  <a href="#_18" class="md-nav__link">
     <span class="md-ellipsis">
       中止虹膜建檔
     </span>
@@ -785,9 +832,18 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_18" class="md-nav__link">
+  <a href="#_19" class="md-nav__link">
     <span class="md-ellipsis">
       專注於特定鏡頭
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_20" class="md-nav__link">
+    <span class="md-ellipsis">
+      設定是否使用新方法
     </span>
   </a>
   
@@ -830,6 +886,7 @@
 <li><a href="#module.main_module.MainWindow.reload_env_settings">重新載入env設定</a></li>
 <li><a href="#module.main_module.MainWindow.start_build_iris_task">開始虹膜建檔</a></li>
 <li><a href="#module.main_module.MainWindow.stop_build_iris_task">中止虹膜建檔</a></li>
+<li><a href="#module.main_module.MainWindow.set_use_new_method">設定是否使用新方法</a></li>
 <li><a href="#module.main_module.MainWindow.start_compare_iris_task">開始虹膜比對</a></li>
 <li><a href="#module.main_module.MainWindow.stop_compare_iris_task">中止虹膜比對</a></li>
 <li><a href="#module.main_module.MainWindow.set_compare_focus_camera">專注於特定鏡頭</a></li>
@@ -2562,8 +2619,142 @@ single_camera_mode: 要採用的單鏡頭模式<br>
 
   </div>
 
-</div><h2 id="_15"><strong><code>虹膜比對設定</code></strong></h2>
-<h3 id="_16"><strong><code>開始虹膜比對</code></strong></h3>
+</div><h3 id="_15"><strong><code>設定是否使用新方法</code></strong></h3>
+<p><font color='#f76560'>注意!!</font> 此設定為暫時的，只會持續到該次建檔/比對結束。若是需要永久設定則需要前往 <a href="env_secrect.html">.env.secrect</a> 中設定
+</p>
+
+
+
+<div class="doc doc-object doc-function">
+
+
+
+
+<a id="module.main_module.MainWindow.set_use_new_method"></a>
+  <div class="doc doc-contents first">
+  
+      <p>是否使用新方法</p>
+
+
+
+  <p><strong>Attributes:</strong></p>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr>
+          <td><code><span title="module.main_module.MainWindow.set_use_new_method.Action">Action</span></code></td>
+          <td>
+                <code>str</code>
+          </td>
+          <td>
+            <div class="doc-md-description">
+              <p>執行動作，setUseNewMethod</p>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td><code><span title="module.main_module.MainWindow.set_use_new_method.Data">Data</span></code></td>
+          <td>
+                <code>dict</code>
+          </td>
+          <td>
+            <div class="doc-md-description">
+              <p>傳入的資料</p>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td><code><span title="module.main_module.MainWindow.set_use_new_method.use_new_method">use_new_method</span></code></td>
+          <td>
+                <code>bool</code>
+          </td>
+          <td>
+            <div class="doc-md-description">
+              <p>是否使用新方法，預設為<strong>False</strong></p>
+            </div>
+          </td>
+        </tr>
+    </tbody>
+  </table>
+      <div class="language-json highlight"><span class="filename">Request Sample</span><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="w">    </span><span class="p">{</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">        </span><span class="nt">&quot;Action&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;setUseNewMethod&quot;</span><span class="p">,</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">        </span><span class="nt">&quot;Data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">            </span><span class="nt">&quot;use_new_method&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">        </span><span class="p">}</span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">    </span><span class="p">}</span>
+</span></code></pre></div>
+
+
+
+  <p><strong>Returns:</strong></p>
+  <table>
+    <thead>
+      <tr>
+<th>Name</th>        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr>
+<td><code>Status</code></td>          <td>
+                <code>str</code>
+          </td>
+          <td>
+            <div class="doc-md-description">
+              <p>執行狀態，success or error</p>
+            </div>
+          </td>
+        </tr>
+        <tr>
+<td><code>StatusCode</code></td>          <td>
+                <code>int</code>
+          </td>
+          <td>
+            <div class="doc-md-description">
+              <p>執行狀態碼，0 or 1，0為成功，1為失敗</p>
+            </div>
+          </td>
+        </tr>
+        <tr>
+<td><code>Action</code></td>          <td>
+                <code>str</code>
+          </td>
+          <td>
+            <div class="doc-md-description">
+              <p>執行動作</p>
+            </div>
+          </td>
+        </tr>
+        <tr>
+<td><code>Message</code></td>          <td>
+                <code>str</code>
+          </td>
+          <td>
+            <div class="doc-md-description">
+              <p>執行訊息</p>
+            </div>
+          </td>
+        </tr>
+    </tbody>
+  </table>
+      <div class="language-json highlight"><span class="filename">Response Sample</span><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="w">    </span><span class="p">{</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">        </span><span class="nt">&quot;Status&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;success&quot;</span><span class="p">,</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">        </span><span class="nt">&quot;StatusCode&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">        </span><span class="nt">&quot;Action&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;setUseNewMethod&quot;</span><span class="p">,</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">        </span><span class="nt">&quot;Message&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Action &#39;setUseNewMethod&#39; executed successfully&quot;</span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">    </span><span class="p">}</span>
+</span></code></pre></div>
+
+  </div>
+
+</div><h2 id="_16"><strong><code>虹膜比對設定</code></strong></h2>
+<h3 id="_17"><strong><code>開始虹膜比對</code></strong></h3>
 <p>此處只負責指派虹膜比對任務到執行緒中，如果需要查看比對回傳結果請查看 <a href="response_message.html#_3">虹膜比對回傳結果</a>
 <font color='#f76560'>注意!!</font> 如果鏡頭開啟失敗或正在啟動，會無法執行此接口
 </p>
@@ -2770,7 +2961,7 @@ single_camera_mode: 要採用的單鏡頭模式<br>
 
   </div>
 
-</div><h3 id="_17"><strong><code>中止虹膜建檔</code></strong></h3>
+</div><h3 id="_18"><strong><code>中止虹膜建檔</code></strong></h3>
 
 
 
@@ -2889,7 +3080,7 @@ single_camera_mode: 要採用的單鏡頭模式<br>
 
   </div>
 
-</div><h3 id="_18"><strong><code>專注於特定鏡頭</code></strong></h3>
+</div><h3 id="_19"><strong><code>專注於特定鏡頭</code></strong></h3>
 
 
 
@@ -3017,6 +3208,140 @@ single_camera_mode: 要採用的單鏡頭模式<br>
 </span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">        </span><span class="nt">&quot;StatusCode&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
 </span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">        </span><span class="nt">&quot;Action&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;setCompareFocusCamera&quot;</span><span class="p">,</span>
 </span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">        </span><span class="nt">&quot;Message&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Action &#39;setCompareFocusCamera&#39; executed successfully&quot;</span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">    </span><span class="p">}</span>
+</span></code></pre></div>
+
+  </div>
+
+</div><h3 id="_20"><strong><code>設定是否使用新方法</code></strong></h3>
+<p><font color='#f76560'>注意!!</font> 此設定為暫時的，只會持續到該次建檔/比對結束。若是需要永久設定則需要前往 <a href="env_secrect.html">.env.secrect</a> 中設定
+</p>
+
+
+
+<div class="doc doc-object doc-function">
+
+
+
+
+<a id="module.main_module.MainWindow.set_use_new_method"></a>
+  <div class="doc doc-contents first">
+  
+      <p>是否使用新方法</p>
+
+
+
+  <p><strong>Attributes:</strong></p>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr>
+          <td><code><span title="module.main_module.MainWindow.set_use_new_method.Action">Action</span></code></td>
+          <td>
+                <code>str</code>
+          </td>
+          <td>
+            <div class="doc-md-description">
+              <p>執行動作，setUseNewMethod</p>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td><code><span title="module.main_module.MainWindow.set_use_new_method.Data">Data</span></code></td>
+          <td>
+                <code>dict</code>
+          </td>
+          <td>
+            <div class="doc-md-description">
+              <p>傳入的資料</p>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td><code><span title="module.main_module.MainWindow.set_use_new_method.use_new_method">use_new_method</span></code></td>
+          <td>
+                <code>bool</code>
+          </td>
+          <td>
+            <div class="doc-md-description">
+              <p>是否使用新方法，預設為<strong>False</strong></p>
+            </div>
+          </td>
+        </tr>
+    </tbody>
+  </table>
+      <div class="language-json highlight"><span class="filename">Request Sample</span><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="w">    </span><span class="p">{</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">        </span><span class="nt">&quot;Action&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;setUseNewMethod&quot;</span><span class="p">,</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">        </span><span class="nt">&quot;Data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">            </span><span class="nt">&quot;use_new_method&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">        </span><span class="p">}</span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">    </span><span class="p">}</span>
+</span></code></pre></div>
+
+
+
+  <p><strong>Returns:</strong></p>
+  <table>
+    <thead>
+      <tr>
+<th>Name</th>        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr>
+<td><code>Status</code></td>          <td>
+                <code>str</code>
+          </td>
+          <td>
+            <div class="doc-md-description">
+              <p>執行狀態，success or error</p>
+            </div>
+          </td>
+        </tr>
+        <tr>
+<td><code>StatusCode</code></td>          <td>
+                <code>int</code>
+          </td>
+          <td>
+            <div class="doc-md-description">
+              <p>執行狀態碼，0 or 1，0為成功，1為失敗</p>
+            </div>
+          </td>
+        </tr>
+        <tr>
+<td><code>Action</code></td>          <td>
+                <code>str</code>
+          </td>
+          <td>
+            <div class="doc-md-description">
+              <p>執行動作</p>
+            </div>
+          </td>
+        </tr>
+        <tr>
+<td><code>Message</code></td>          <td>
+                <code>str</code>
+          </td>
+          <td>
+            <div class="doc-md-description">
+              <p>執行訊息</p>
+            </div>
+          </td>
+        </tr>
+    </tbody>
+  </table>
+      <div class="language-json highlight"><span class="filename">Response Sample</span><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="w">    </span><span class="p">{</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">        </span><span class="nt">&quot;Status&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;success&quot;</span><span class="p">,</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">        </span><span class="nt">&quot;StatusCode&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">        </span><span class="nt">&quot;Action&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;setUseNewMethod&quot;</span><span class="p">,</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">        </span><span class="nt">&quot;Message&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Action &#39;setUseNewMethod&#39; executed successfully&quot;</span>
 </span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">    </span><span class="p">}</span>
 </span></code></pre></div>
 
