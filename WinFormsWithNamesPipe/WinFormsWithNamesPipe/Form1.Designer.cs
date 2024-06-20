@@ -158,7 +158,7 @@
             textBox1.Name = "textBox1";
             textBox1.Size = new Size(726, 24);
             textBox1.TabIndex = 27;
-            textBox1.Text = "D:\\project\\ling_don_iris_project\\ling_don_iris_module\\dist\\iris_recognize_module\\iris_recognize_module.exe";
+            textBox1.Text = "C:\\Users\\User\\source\\repos\\lingDonIrisModule\\x64\\Release\\iris_recognize_module.exe";
             // 
             // openProgramBtn
             // 

@@ -635,7 +635,9 @@ namespace WinFormsWithNamesPipe
                                 loft_id = loftIdTextBox.Text,
                                 feet_number = feetNumberTextBox.Text,
                                 folder_path = @"C:\iris_data",
-                                threshold = 0.35
+                                threshold = 0.35,
+                                need_save = true,
+                                export_pdf_path = @"C:\iris_data_pdf"
                             }
                         };
                         string message = JsonSerializer.Serialize(operation);
