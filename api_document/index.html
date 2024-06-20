@@ -419,26 +419,35 @@
 <p>更多的使用範例，請參見我們的<a href="python_api.html">API參考文檔</a>。</p>
 <p>載入、建檔與比對結果的接收請參見<a href="response_message.html">載入/建檔/比對回傳格式文檔</a></p>
 <h1 id="api">API 變更日誌</h1>
+<h2 id="vbeta20240620-2024-06-20">[v.beta.2024.06.20] - 2024-06-20</h2>
+<h3 id="_1">變更</h3>
+<ul>
+<li>在 <a href="python_api.html#_17">開始虹膜比對</a> API中新增了<code>export_pdf_path</code>，可指定當<strong>比對失敗</strong>時，要輸出的PDF資料夾路徑，預設<code>./exportCompareFailedPDF</code>，即產生在此模組資料夾中</li>
+<li>在 <a href="python_api.html#_17">開始虹膜比對</a> API<strong>比對失敗</strong>後，會產生一份檔名為<code>{loftId}_{feetNumber}_{yyyyMMddHHmmss}.pdf</code>的pdf <a href="pdf/002_0001_20240619175043.pdf">繁體範例</a>、<a href="pdf/test_test_20240619173702.pdf">簡體範例</a></li>
+<li>在 <a href="env.html#pdf_export_lang">env</a> 新增了 PDF_EXPORT_LANG 可以用於設定是否指定pdf輸出的語言與編碼，預設為<strong>系統自動偵測</strong></li>
+<li>在 <a href="python_api.html#_13">開始虹膜建檔</a> 每次<strong>建檔</strong>後，會額外輸出該虹膜的紋路圖供保存，預設路徑如下<code>{folder_path}/export_{season_id}/{loft_id}</code>，而當次檔名則為<code>{loft_id}_{feet_number}_{當次建檔產生之檔名}.jpg</code></li>
+</ul>
 <h2 id="vbeta20240524-2024-05-24">[v.beta.2024.05.24] - 2024-05-24</h2>
+<h3 id="_2">變更</h3>
 <ul>
 <li>新增了 <a href="env_secrect.html">.env.secrect</a> 的相關描述文檔</li>
 <li>新增 <a href="python_api.html#_15">setUseNewMethod API</a>，在 <strong>建檔</strong> 或 <strong>比對</strong> 的當下，發現無法成功進行可透過此API去調整是否切換至舊版分析方法</li>
 <li>新增了建檔比對模糊度閾值， 可參考 <a href="env_secrect.html">.env.secrect</a></li>
 </ul>
 <h2 id="vbeta20240520-2024-05-20">[v.beta.2024.05.20] - 2024-05-20</h2>
-<h3 id="_1">變更</h3>
+<h3 id="_3">變更</h3>
 <ul>
 <li>新增了<a href="response_message.html">建檔、比對錯誤訊息的主動回傳</a> 當建檔和比對有未歸檔的錯誤發生時，會傳送此訊息給使用者告知</li>
 </ul>
 <h2 id="vbeta20240510-2024-05-10">[v.beta.2024.05.10] - 2024-05-10</h2>
-<h3 id="_2">變更</h3>
+<h3 id="_4">變更</h3>
 <ul>
 <li>新增了<a href="env.html">env</a> 的 SHOW_EYE_DETECT_UNAVAILABLE_BOX 用於控制是否顯示紅色框</li>
 <li>新增了<a href="env.html">env</a> 的 SHOW_PROGRESS_BAR 用於控制是否顯示建檔的進度條</li>
 <li>新增了<a href="python_api.html#env">重新載入env設定API</a>，方便在調整完env檔案後，不用關閉程式可直接重新載入設定內容</li>
 </ul>
 <h2 id="vbeta20240412-2024-04-12">[v.beta.2024.04.12] - 2024-04-12</h2>
-<h3 id="_3">變更</h3>
+<h3 id="_5">變更</h3>
 <ul>
 <li>新增了<a href="python_api.html#_9">左右翻轉攝影機API</a> <code>flipCamera</code>，可傳入camera_src = 'left' or camera_src = 'right' 來決定要翻轉的鏡頭對象。</li>
 <li>在 <a href="env.html">env</a> 新增了左右鏡頭各自的flip 設定，方便在程式下次開啟時自動翻轉鏡頭。<font color="red"><strong>程式重啟後生效</strong></font></li>
@@ -448,7 +457,7 @@
 <li>將建檔擷取的影像以及分析檔，在該檔名前面加上<strong>L-</strong>, <strong>R-</strong> 來區分是由左側還是右側的鏡頭所產生的檔案。</li>
 </ul>
 <h2 id="vbeta20240402-2024-04-02">[v.beta.2024.04.02] - 2024-04-02</h2>
-<h3 id="_4">變更</h3>
+<h3 id="_6">變更</h3>
 <ul>
 <li>新增了主動回傳載入完成的訊息功能到您的Name Pipe Server 中，請參見<a href="response_message.html#_2">載入任務回傳結果</a></li>
 <li>在所有<a href="python_api.html">API回傳格式</a>中都新增 <code>Action</code> 欄位，方便去辨別此回傳是由哪個Action觸發的</li>
@@ -471,7 +480,7 @@
 <li>移除了<a href="env.html">env</a>中的theme設定，只保留會使用的單一主題</li>
 </ul>
 <h2 id="vbeta20240320-2024-03-20">[v.beta.2024.03.20] - 2024-03-20</h2>
-<h3 id="_5">變更</h3>
+<h3 id="_7">變更</h3>
 <ul>
 <li>新增了比對虹膜的相關API</li>
 <li>
@@ -491,7 +500,7 @@
 <li>新增了<a href="python_api_detail.html">API詳細應用說明</a> ，裡面針對API的一些應用做了相對應的補充</li>
 </ul>
 <h2 id="vbeta20240112-2024-01-12">[v.beta.2024.01.12] - 2024-01-12</h2>
-<h3 id="_6">變更</h3>
+<h3 id="_8">變更</h3>
 <ul>
 <li>配合嵌入式做出程式內調整<ul>
 <li>為了讓.Net 可以正確獲取python 程式的MainWindowHandle，現已預設<font color="red"><strong>關閉</strong></font>攝影機的自動開啟。
