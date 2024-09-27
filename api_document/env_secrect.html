@@ -456,6 +456,15 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#use_ema_update_method" class="md-nav__link">
+    <span class="md-ellipsis">
+      USE_EMA_UPDATE_METHOD
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -544,6 +553,15 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#use_ema_update_method" class="md-nav__link">
+    <span class="md-ellipsis">
+      USE_EMA_UPDATE_METHOD
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -576,14 +594,21 @@
 <p>此參數設定了當比對時需要等待幾幀的清晰影像後才開始比對<br>
 預設 <strong>'5'</strong></p>
 <h2 id="detect_frame_cool_down">DETECT_FRAME_COOL_DOWN</h2>
-<p>此參數設定了，每次框選完眼睛後，要休息幾幀才進行下次眼睛框選<br>
+<p>此參數設定了每次框選完眼睛後，要休息幾幀才進行下次眼睛框選<br>
 提供給較低階顯卡使用，比如使用時發現幀數很低，可適當加入cool_down<br>
 讓框選眼睛的頻率降低。<br>
 預設 <strong>'0'</strong></p>
 <h2 id="use_new_detect_method">USE_NEW_DETECT_METHOD</h2>
 <p>當前系統中有兩套虹膜分析方法，新方法對於半遮以及無法進行建檔比對的分析結果做出阻擋。<br>
 但仍需測試，如有無法分析的情況產生可藉由調整此參數，讓系統預設使用舊方法分析。<br>
-1: 使用 0: 不使用
+1: 使用 0: 不使用<br>
+預設 <strong>'1'</strong></p>
+<h2 id="use_ema_update_method">USE_EMA_UPDATE_METHOD</h2>
+<p>此參數設定了是否使用EMA的方法來更新檢測過濾如"眨眼"/"晃動"的閾值，<br>
+開啟後可更適配於各種不同的光源以及鴿種，<br>
+但較為適用於鴿子進入鏡頭後能正常睜眼<br>
+若是對於不斷眨眼或是眼睛睜不開的拍攝情境來說效果較差<br>
+1: 使用 0: 不使用<br>
 預設 <strong>'1'</strong></p>
 
 
