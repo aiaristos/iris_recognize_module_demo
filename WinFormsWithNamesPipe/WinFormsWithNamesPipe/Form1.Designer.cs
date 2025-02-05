@@ -1,4 +1,4 @@
-﻿namespace WinFormsWithNamesPipe
+namespace WinFormsWithNamesPipe
 {
     partial class Form1
     {
@@ -63,6 +63,11 @@
             flipRightCameraBtn = new Button();
             reloadEnvSettingBtn = new Button();
             useOldMethod = new Button();
+            upsideDownLeftCameraBtn = new Button();
+            upsideDownRightCameraBtn = new Button();
+            upsideDownCameraParamComboBox = new ComboBox();
+            saveHintPreferenceBtn = new Button();
+            hintPreferenceComboBox = new ComboBox();
             ((System.ComponentModel.ISupportInitialize)leftBuildNum).BeginInit();
             ((System.ComponentModel.ISupportInitialize)rightBuildNum).BeginInit();
             SuspendLayout();
@@ -79,7 +84,7 @@
             // startBuildIrisBtn
             // 
             startBuildIrisBtn.Font = new Font("Microsoft JhengHei UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 136);
-            startBuildIrisBtn.Location = new Point(162, 296);
+            startBuildIrisBtn.Location = new Point(162, 268);
             startBuildIrisBtn.Margin = new Padding(2);
             startBuildIrisBtn.Name = "startBuildIrisBtn";
             startBuildIrisBtn.Size = new Size(153, 37);
@@ -103,7 +108,7 @@
             // 
             stopBuildIrisBtn.Enabled = false;
             stopBuildIrisBtn.Font = new Font("Microsoft JhengHei UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 136);
-            stopBuildIrisBtn.Location = new Point(354, 296);
+            stopBuildIrisBtn.Location = new Point(162, 309);
             stopBuildIrisBtn.Margin = new Padding(2);
             stopBuildIrisBtn.Name = "stopBuildIrisBtn";
             stopBuildIrisBtn.Size = new Size(153, 37);
@@ -386,7 +391,7 @@
             // 
             openCameraParamComboBox.FormattingEnabled = true;
             openCameraParamComboBox.Items.AddRange(new object[] { "disable", "left", "right" });
-            openCameraParamComboBox.Location = new Point(202, 121);
+            openCameraParamComboBox.Location = new Point(202, 101);
             openCameraParamComboBox.Name = "openCameraParamComboBox";
             openCameraParamComboBox.Size = new Size(116, 25);
             openCameraParamComboBox.TabIndex = 51;
@@ -394,10 +399,10 @@
             // flipLeftCameraBtn
             // 
             flipLeftCameraBtn.Font = new Font("Microsoft JhengHei UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 136);
-            flipLeftCameraBtn.Location = new Point(535, 76);
+            flipLeftCameraBtn.Location = new Point(519, 76);
             flipLeftCameraBtn.Margin = new Padding(2);
             flipLeftCameraBtn.Name = "flipLeftCameraBtn";
-            flipLeftCameraBtn.Size = new Size(153, 37);
+            flipLeftCameraBtn.Size = new Size(94, 37);
             flipLeftCameraBtn.TabIndex = 52;
             flipLeftCameraBtn.Text = "左側翻轉";
             flipLeftCameraBtn.UseVisualStyleBackColor = true;
@@ -406,10 +411,10 @@
             // flipRightCameraBtn
             // 
             flipRightCameraBtn.Font = new Font("Microsoft JhengHei UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 136);
-            flipRightCameraBtn.Location = new Point(535, 134);
+            flipRightCameraBtn.Location = new Point(623, 76);
             flipRightCameraBtn.Margin = new Padding(2);
             flipRightCameraBtn.Name = "flipRightCameraBtn";
-            flipRightCameraBtn.Size = new Size(153, 37);
+            flipRightCameraBtn.Size = new Size(94, 37);
             flipRightCameraBtn.TabIndex = 53;
             flipRightCameraBtn.Text = "右側翻轉";
             flipRightCameraBtn.UseVisualStyleBackColor = true;
@@ -439,11 +444,70 @@
             useOldMethod.UseVisualStyleBackColor = true;
             useOldMethod.Click += useOldMethod_Click;
             // 
+            // upsideDownLeftCameraBtn
+            // 
+            upsideDownLeftCameraBtn.Font = new Font("Microsoft JhengHei UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 136);
+            upsideDownLeftCameraBtn.Location = new Point(519, 131);
+            upsideDownLeftCameraBtn.Margin = new Padding(2);
+            upsideDownLeftCameraBtn.Name = "upsideDownLeftCameraBtn";
+            upsideDownLeftCameraBtn.Size = new Size(94, 37);
+            upsideDownLeftCameraBtn.TabIndex = 56;
+            upsideDownLeftCameraBtn.Text = "左側上下翻轉";
+            upsideDownLeftCameraBtn.UseVisualStyleBackColor = true;
+            upsideDownLeftCameraBtn.Click += upsideDownLeftCameraBtn_Click;
+            // 
+            // upsideDownRightCameraBtn
+            // 
+            upsideDownRightCameraBtn.Font = new Font("Microsoft JhengHei UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 136);
+            upsideDownRightCameraBtn.Location = new Point(623, 131);
+            upsideDownRightCameraBtn.Margin = new Padding(2);
+            upsideDownRightCameraBtn.Name = "upsideDownRightCameraBtn";
+            upsideDownRightCameraBtn.Size = new Size(94, 37);
+            upsideDownRightCameraBtn.TabIndex = 57;
+            upsideDownRightCameraBtn.Text = "右側上下翻轉";
+            upsideDownRightCameraBtn.UseVisualStyleBackColor = true;
+            upsideDownRightCameraBtn.Click += upsideDownRightCameraBtn_Click;
+            // 
+            // upsideDownCameraParamComboBox
+            // 
+            upsideDownCameraParamComboBox.FormattingEnabled = true;
+            upsideDownCameraParamComboBox.Items.AddRange(new object[] { "ignore", "disable", "enable" });
+            upsideDownCameraParamComboBox.Location = new Point(202, 138);
+            upsideDownCameraParamComboBox.Name = "upsideDownCameraParamComboBox";
+            upsideDownCameraParamComboBox.Size = new Size(116, 25);
+            upsideDownCameraParamComboBox.TabIndex = 58;
+            // 
+            // saveHintPreferenceBtn
+            // 
+            saveHintPreferenceBtn.Font = new Font("Microsoft JhengHei UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 136);
+            saveHintPreferenceBtn.Location = new Point(340, 268);
+            saveHintPreferenceBtn.Margin = new Padding(2);
+            saveHintPreferenceBtn.Name = "saveHintPreferenceBtn";
+            saveHintPreferenceBtn.Size = new Size(153, 37);
+            saveHintPreferenceBtn.TabIndex = 59;
+            saveHintPreferenceBtn.Text = "隱藏提示";
+            saveHintPreferenceBtn.UseVisualStyleBackColor = true;
+            saveHintPreferenceBtn.Click += saveHintPreference_Click;
+            // 
+            // hintPreferenceComboBox
+            // 
+            hintPreferenceComboBox.FormattingEnabled = true;
+            hintPreferenceComboBox.Items.AddRange(new object[] { "all", "left", "right" });
+            hintPreferenceComboBox.Location = new Point(340, 316);
+            hintPreferenceComboBox.Name = "hintPreferenceComboBox";
+            hintPreferenceComboBox.Size = new Size(153, 25);
+            hintPreferenceComboBox.TabIndex = 60;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(8F, 17F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1694, 676);
+            Controls.Add(hintPreferenceComboBox);
+            Controls.Add(saveHintPreferenceBtn);
+            Controls.Add(upsideDownCameraParamComboBox);
+            Controls.Add(upsideDownRightCameraBtn);
+            Controls.Add(upsideDownLeftCameraBtn);
             Controls.Add(useOldMethod);
             Controls.Add(reloadEnvSettingBtn);
             Controls.Add(flipRightCameraBtn);
@@ -526,5 +590,10 @@
         private Button flipRightCameraBtn;
         private Button reloadEnvSettingBtn;
         private Button useOldMethod;
+        private Button upsideDownLeftCameraBtn;
+        private Button upsideDownRightCameraBtn;
+        private ComboBox upsideDownCameraParamComboBox;
+        private Button saveHintPreferenceBtn;
+        private ComboBox hintPreferenceComboBox;
     }
 }

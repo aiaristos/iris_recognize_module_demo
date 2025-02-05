@@ -16,14 +16,14 @@ namespace WinFormsWithNamesPipe
         private Process pythonProcess;
         private bool needRetry;
 
-        // ©w¸q­n¶Ç°eµ¹Pythonªº¸ê®Æ®æ¦¡
+        // å®šç¾©è¦å‚³é€çµ¦Pythonçš„è³‡æ–™æ ¼å¼
         public class Operation
         {
             public required string Action { get; set; }
             public required object Data { get; set; }
         }
 
-        // ©w¸q­n±µ¦¬¨Ó¦ÛPythonªº¸ê®Æ®æ¦¡
+        // å®šç¾©è¦æ¥æ”¶ä¾†è‡ªPythonçš„è³‡æ–™æ ¼å¼
         public class RecivedResult
         {
             public required string Status { get; set; }
@@ -35,19 +35,19 @@ namespace WinFormsWithNamesPipe
 
         public Form1()
         {
-            // ªì©l¤Æªí³æ¤¸¥ó
+            // åˆå§‹åŒ–è¡¨å–®å…ƒä»¶
             InitializeComponent();
 
-            // ªì©l¤ÆNamedPipe Server
+            // åˆå§‹åŒ–NamedPipe Server
             NamedPipeServer.OnMessageReceived += UpdateSystemMsgUI;
             NamedPipeServer.onCompareResultStatusReceived += UpdateCompareResultUI;
             NamedPipeServer.StartServer();
 
-            // ªì©l¤ÆNamedPipe Client
+            // åˆå§‹åŒ–NamedPipe Client
             InitializePipeClient();
         }
 
-        // ªì©l¤Æ­n¥Î©ó·¾³qªºNamedPipe
+        // åˆå§‹åŒ–è¦ç”¨æ–¼æºé€šçš„NamedPipe
         private void InitializePipeClient()
         {
             try
@@ -61,10 +61,10 @@ namespace WinFormsWithNamesPipe
             }
         }
 
-        // ÀË¬dNamedPipe¬O§_³s½u
+        // æª¢æŸ¥NamedPipeæ˜¯å¦é€£ç·š
         private bool CheckPipeClientConnection()
         {
-            // ªì©l¤ÆNamedPipe Client
+            // åˆå§‹åŒ–NamedPipe Client
             if (pipeClient == null)
             {
                 InitializePipeClient();
@@ -94,12 +94,12 @@ namespace WinFormsWithNamesPipe
                 {
                     if (!CheckPipeClientConnection())
                     {
-                        // ¦pªG¨S¦³³s±µ¡Aª½±µ©ñ±ó³z¹LapiÃö³¬PythonÀ³¥Îµ{¦¡
-                        // ª½±µ¶i¦æÃö³¬
-                        // ½T«O¶iµ{¦s¦b¥B©|¥¼°h¥X
+                        // å¦‚æœæ²’æœ‰é€£æ¥ï¼Œç›´æ¥æ”¾æ£„é€éapié—œé–‰Pythonæ‡‰ç”¨ç¨‹å¼
+                        // ç›´æ¥é€²è¡Œé—œé–‰
+                        // ç¢ºä¿é€²ç¨‹å­˜åœ¨ä¸”å°šæœªé€€å‡º
                         if (pythonProcess != null && !pythonProcess.HasExited)
                         {
-                            // ¹Á¸Õ¥¿±`µ²§ô¶iµ{
+                            // å˜—è©¦æ­£å¸¸çµæŸé€²ç¨‹
                             pythonProcess.CloseMainWindow();
                             pythonProcess.Close();
                         }
@@ -112,7 +112,7 @@ namespace WinFormsWithNamesPipe
                     {
                         sw.AutoFlush = true;
 
-                        // ±N¸ê®Æ²Õ¦¨json®æ¦¡
+                        // å°‡è³‡æ–™çµ„æˆjsonæ ¼å¼
                         Operation operation = new Operation
                         {
                             Action = "closeProgram",
@@ -122,21 +122,21 @@ namespace WinFormsWithNamesPipe
 
                         sw.WriteLine(message);
 
-                        // µ¥«İPythonÀ³¥Îµ{¦¡¦^¶Ç°T®§
+                        // ç­‰å¾…Pythonæ‡‰ç”¨ç¨‹å¼å›å‚³è¨Šæ¯
                         string result = sr.ReadLine();
                         RecivedResult recivedResult = JsonSerializer.Deserialize<RecivedResult>(result);
 
                         while (recivedResult.Action != "closeProgram")
                         {
-                            // ±µ¦¬¨Ó¦ÛPythonªº¸ê®Æ
+                            // æ¥æ”¶ä¾†è‡ªPythonçš„è³‡æ–™
                             result = sr.ReadLine();
                             recivedResult = JsonSerializer.Deserialize<RecivedResult>(result);
                         }
 
-                        // ½T«O¶iµ{¦s¦b¥B©|¥¼°h¥X
+                        // ç¢ºä¿é€²ç¨‹å­˜åœ¨ä¸”å°šæœªé€€å‡º
                         if (pythonProcess != null && !pythonProcess.HasExited)
                         {
-                            // ¹Á¸Õ¥¿±`µ²§ô¶iµ{
+                            // å˜—è©¦æ­£å¸¸çµæŸé€²ç¨‹
                             pythonProcess.CloseMainWindow();
                             pythonProcess.Close();
                         }
@@ -167,9 +167,9 @@ namespace WinFormsWithNamesPipe
                 {
                     if (!CheckPipeClientConnection())
                     {
-                        // ¦pªG¨S¦³³s±µ¡Aª½±µµ²§ô¦¹¤èªk
-                        // Åã¥Ü¿ù»~°T®§
-                        MessageBox.Show("NamedPipe ³s½u¥¢±Ñ", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        // å¦‚æœæ²’æœ‰é€£æ¥ï¼Œç›´æ¥çµæŸæ­¤æ–¹æ³•
+                        // é¡¯ç¤ºéŒ¯èª¤è¨Šæ¯
+                        MessageBox.Show("NamedPipe é€£ç·šå¤±æ•—", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                         return;
                     }
@@ -179,7 +179,7 @@ namespace WinFormsWithNamesPipe
                     {
                         sw.AutoFlush = true;
 
-                        // ±N¸ê®Æ²Õ¦¨json®æ¦¡
+                        // å°‡è³‡æ–™çµ„æˆjsonæ ¼å¼
                         Operation operation = new Operation
                         {
                             Action = "startBuildIris",
@@ -190,20 +190,21 @@ namespace WinFormsWithNamesPipe
                                 feet_number = feetNumberTextBox.Text,
                                 folder_path = @"C:\iris_data",
                                 left_build_num = leftBuildNum.Value,
-                                right_build_num = rightBuildNum.Value
+                                right_build_num = rightBuildNum.Value,
+                                need_export = false
                             }
                         };
                         string message = JsonSerializer.Serialize(operation);
 
                         sw.WriteLine(message);
 
-                        // ±µ¦¬¨Ó¦ÛPythonªº¸ê®Æ
+                        // æ¥æ”¶ä¾†è‡ªPythonçš„è³‡æ–™
                         string result = sr.ReadLine();
                         RecivedResult recivedResult = JsonSerializer.Deserialize<RecivedResult>(result);
 
                         while (recivedResult.Action != "startBuildIris")
                         {
-                            // ±µ¦¬¨Ó¦ÛPythonªº¸ê®Æ
+                            // æ¥æ”¶ä¾†è‡ªPythonçš„è³‡æ–™
                             result = sr.ReadLine();
                             recivedResult = JsonSerializer.Deserialize<RecivedResult>(result);
                         }
@@ -214,7 +215,7 @@ namespace WinFormsWithNamesPipe
                         }
                         else
                         {
-                            // ¼ÒÀÀ¶}©l«ØÀÉ¡A½Õ¾ã«ö¶sª¬ºA
+                            // æ¨¡æ“¬é–‹å§‹å»ºæª”ï¼Œèª¿æ•´æŒ‰éˆ•ç‹€æ…‹
                             // disabled button
                             startBuildIrisBtn.Enabled = false;
                             startCompareIrisBtn.Enabled = false;
@@ -223,8 +224,8 @@ namespace WinFormsWithNamesPipe
                             // enabled button
                             stopBuildIrisBtn.Enabled = true;
 
-                            // §ó·sUI
-                            systemMsg.Text = "¶}©l«ØÀÉ";
+                            // æ›´æ–°UI
+                            systemMsg.Text = "é–‹å§‹å»ºæª”";
                         }
                     }
                 }
@@ -253,9 +254,9 @@ namespace WinFormsWithNamesPipe
                 {
                     if (!CheckPipeClientConnection())
                     {
-                        // ¦pªG¨S¦³³s±µ¡Aª½±µµ²§ô¦¹¤èªk
-                        // Åã¥Ü¿ù»~°T®§
-                        MessageBox.Show("NamedPipe ³s½u¥¢±Ñ", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        // å¦‚æœæ²’æœ‰é€£æ¥ï¼Œç›´æ¥çµæŸæ­¤æ–¹æ³•
+                        // é¡¯ç¤ºéŒ¯èª¤è¨Šæ¯
+                        MessageBox.Show("NamedPipe é€£ç·šå¤±æ•—", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                         return;
                     }
@@ -265,7 +266,7 @@ namespace WinFormsWithNamesPipe
                     {
                         sw.AutoFlush = true;
 
-                        // ±N¸ê®Æ²Õ¦¨json®æ¦¡
+                        // å°‡è³‡æ–™çµ„æˆjsonæ ¼å¼
                         Operation operation = new Operation
                         {
                             Action = "stopBuildIris",
@@ -275,13 +276,13 @@ namespace WinFormsWithNamesPipe
 
                         sw.WriteLine(message);
 
-                        // ±µ¦¬¨Ó¦ÛPythonªº¸ê®Æ
+                        // æ¥æ”¶ä¾†è‡ªPythonçš„è³‡æ–™
                         string result = sr.ReadLine();
                         RecivedResult recivedResult = JsonSerializer.Deserialize<RecivedResult>(result);
 
                         while (recivedResult.Action != "stopBuildIris")
                         {
-                            // ±µ¦¬¨Ó¦ÛPythonªº¸ê®Æ
+                            // æ¥æ”¶ä¾†è‡ªPythonçš„è³‡æ–™
                             result = sr.ReadLine();
                             recivedResult = JsonSerializer.Deserialize<RecivedResult>(result);
                         }
@@ -292,7 +293,7 @@ namespace WinFormsWithNamesPipe
                         }
                         else
                         {
-                            // ¼ÒÀÀ¤¤Â_«ØÀÉ¡A½Õ¾ã«ö¶sª¬ºA
+                            // æ¨¡æ“¬ä¸­æ–·å»ºæª”ï¼Œèª¿æ•´æŒ‰éˆ•ç‹€æ…‹
                             // disabled button
                             stopBuildIrisBtn.Enabled = false;
                             stopCompareIrisBtn.Enabled = false;
@@ -301,8 +302,8 @@ namespace WinFormsWithNamesPipe
                             startBuildIrisBtn.Enabled = true;
                             startCompareIrisBtn.Enabled = true;
 
-                            // §ó·sUI
-                            systemMsg.Text = "¤¤Â_«ØÀÉ";
+                            // æ›´æ–°UI
+                            systemMsg.Text = "ä¸­æ–·å»ºæª”";
                         }
                     }
                 }
@@ -322,27 +323,27 @@ namespace WinFormsWithNamesPipe
             }
         }
 
-        // §ó·s¨t²Î°T®§
+        // æ›´æ–°ç³»çµ±è¨Šæ¯
         private void UpdateSystemMsgUI(string message, string action)
         {
-            // ½T«O¸ó°õ¦æ§Çªº¾Ş§@¦w¥ş
+            // ç¢ºä¿è·¨åŸ·è¡Œåºçš„æ“ä½œå®‰å…¨
             if (InvokeRequired)
             {
                 Invoke(new Action<string, string>(UpdateSystemMsgUI), message, action);
             }
             else
             {
-                // §ó·sUI
+                // æ›´æ–°UI
                 systemMsg.Text = message;
 
-                // ¦pªG¶Ç¤Jªºaction = build_iris_error or compare_iris_error
-                // «h¤£¶·«áÄò½Õ¾ã«ö¶sª¬ºA
+                // å¦‚æœå‚³å…¥çš„action = build_iris_error or compare_iris_error
+                // å‰‡ä¸é ˆå¾ŒçºŒèª¿æ•´æŒ‰éˆ•ç‹€æ…‹
                 if (action == "build_iris_error" || action == "compare_iris_error")
                 {
                     return;
                 }
 
-                // ¼ÒÀÀ«ØÀÉ¤ñ¹ï§¹¦¨¡A½Õ¾ã«ö¶sª¬ºA
+                // æ¨¡æ“¬å»ºæª”æ¯”å°å®Œæˆï¼Œèª¿æ•´æŒ‰éˆ•ç‹€æ…‹
                 // disabled button
                 stopBuildIrisBtn.Enabled = false;
                 stopCompareIrisBtn.Enabled = false;
@@ -353,24 +354,24 @@ namespace WinFormsWithNamesPipe
             }
         }
 
-        // §ó·sÅã¥Ü¤ñ¹ïµ²ªG
+        // æ›´æ–°é¡¯ç¤ºæ¯”å°çµæœ
         private void UpdateCompareResultUI(int statusCode)
         {
-            // ½T«O¸ó°õ¦æ§Çªº¾Ş§@¦w¥ş
+            // ç¢ºä¿è·¨åŸ·è¡Œåºçš„æ“ä½œå®‰å…¨
             if (InvokeRequired)
             {
                 Invoke(new Action<int>(UpdateCompareResultUI), statusCode);
             }
             else
             {
-                // §ó·sUI
-                // ¦pªGstatusCode = 0 ¥Nªí¦¨¥\, ±NcompareResult­I´º¦â³]¬°ºñ¦â
-                // ¦pªGstatus = ¨ä¥L¼Æ­È ¥Nªí¥¢±Ñ, ±NcompareResult­I´º¦â³]¬°¬õ¦â
+                // æ›´æ–°UI
+                // å¦‚æœstatusCode = 0 ä»£è¡¨æˆåŠŸ, å°‡compareResultèƒŒæ™¯è‰²è¨­ç‚ºç¶ è‰²
+                // å¦‚æœstatus = å…¶ä»–æ•¸å€¼ ä»£è¡¨å¤±æ•—, å°‡compareResultèƒŒæ™¯è‰²è¨­ç‚ºç´…è‰²
                 compareResult.BackColor = statusCode == 0 ? Color.Green : Color.Red;
             }
         }
 
-        // ¶}±Òpythonµ{¦¡
+        // é–‹å•Ÿpythonç¨‹å¼
         private void openProgramBtn_Click(object sender, EventArgs e)
         {
             while (true)
@@ -378,7 +379,7 @@ namespace WinFormsWithNamesPipe
                 needRetry = false;
                 try
                 {
-                    // ±Ò°Ê Python À³¥Îµ{¦¡ªº exe
+                    // å•Ÿå‹• Python æ‡‰ç”¨ç¨‹å¼çš„ exe
                     pythonProcess = new Process
                     {
                         StartInfo = new ProcessStartInfo
@@ -389,14 +390,14 @@ namespace WinFormsWithNamesPipe
                     };
                     pythonProcess.Start();
 
-                    // µ¥«İ Python À³¥Îµ{¦¡GUI«Ø¥ß
+                    // ç­‰å¾… Python æ‡‰ç”¨ç¨‹å¼GUIå»ºç«‹
                     pythonProcess.WaitForInputIdle();
 
-                    // ±N Python À³¥Îµ{¦¡µ¡¤f´O¤J¨ì WinForms ¤¤
+                    // å°‡ Python æ‡‰ç”¨ç¨‹å¼çª—å£åµŒå…¥åˆ° WinForms ä¸­
                     SetParent(pythonProcess.MainWindowHandle, cameraPanel.Handle);
 
-                    // ²¾°Ê¨ì³Ì¥ª¤W¨¤
-                    // ¨ú¥X cameraPanel ªºªø¼e
+                    // ç§»å‹•åˆ°æœ€å·¦ä¸Šè§’
+                    // å–å‡º cameraPanel çš„é•·å¯¬
                     int width = cameraPanel.Width;
                     int height = cameraPanel.Height;
 
@@ -406,9 +407,9 @@ namespace WinFormsWithNamesPipe
                     {
                         if (!CheckPipeClientConnection())
                         {
-                            // ¦pªG¨S¦³³s±µ¡Aª½±µµ²§ô¦¹¤èªk
-                            // Åã¥Ü¿ù»~°T®§
-                            MessageBox.Show("NamedPipe ³s½u¥¢±Ñ", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            // å¦‚æœæ²’æœ‰é€£æ¥ï¼Œç›´æ¥çµæŸæ­¤æ–¹æ³•
+                            // é¡¯ç¤ºéŒ¯èª¤è¨Šæ¯
+                            MessageBox.Show("NamedPipe é€£ç·šå¤±æ•—", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                             return;
                         }
@@ -418,27 +419,28 @@ namespace WinFormsWithNamesPipe
                         {
                             sw.AutoFlush = true;
 
-                            // ±N¸ê®Æ²Õ¦¨json®æ¦¡
+                            // å°‡è³‡æ–™çµ„æˆjsonæ ¼å¼
                             Operation operation = new Operation
                             {
                                 Action = "openCamera",
                                 Data = new
                                 {
-                                    single_camera_mode = openCameraParamComboBox.SelectedItem.ToString()
+                                    single_camera_mode = openCameraParamComboBox.SelectedItem.ToString(),
+                                    upside_down_all_camera_mode = upsideDownCameraParamComboBox.SelectedItem.ToString()
                                 }
                             };
                             string message = JsonSerializer.Serialize(operation);
 
-                            // °õ¦æ«ü¥O
+                            // åŸ·è¡ŒæŒ‡ä»¤
                             sw.WriteLine(message);
 
-                            // µ¥«İPythonÀ³¥Îµ{¦¡¦^¶Ç°T®§
+                            // ç­‰å¾…Pythonæ‡‰ç”¨ç¨‹å¼å›å‚³è¨Šæ¯
                             string result = sr.ReadLine();
                             RecivedResult recivedResult = JsonSerializer.Deserialize<RecivedResult>(result);
 
                             while (recivedResult.Action != "openCamera")
                             {
-                                // ±µ¦¬¨Ó¦ÛPythonªº¸ê®Æ
+                                // æ¥æ”¶ä¾†è‡ªPythonçš„è³‡æ–™
                                 result = sr.ReadLine();
                                 recivedResult = JsonSerializer.Deserialize<RecivedResult>(result);
                             }
@@ -479,9 +481,9 @@ namespace WinFormsWithNamesPipe
                 {
                     if (!CheckPipeClientConnection())
                     {
-                        // ¦pªG¨S¦³³s±µ¡Aª½±µµ²§ô¦¹¤èªk
-                        // Åã¥Ü¿ù»~°T®§
-                        MessageBox.Show("NamedPipe ³s½u¥¢±Ñ", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        // å¦‚æœæ²’æœ‰é€£æ¥ï¼Œç›´æ¥çµæŸæ­¤æ–¹æ³•
+                        // é¡¯ç¤ºéŒ¯èª¤è¨Šæ¯
+                        MessageBox.Show("NamedPipe é€£ç·šå¤±æ•—", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                         return;
                     }
@@ -491,27 +493,28 @@ namespace WinFormsWithNamesPipe
                     {
                         sw.AutoFlush = true;
 
-                        // ±N¸ê®Æ²Õ¦¨json®æ¦¡
+                        // å°‡è³‡æ–™çµ„æˆjsonæ ¼å¼
                         // action: openCamera
                         Operation operation = new Operation
                         {
                             Action = "openCamera",
                             Data = new
                             {
-                                single_camera_mode = openCameraParamComboBox.SelectedItem.ToString()
+                                single_camera_mode = openCameraParamComboBox.SelectedItem.ToString(),
+                                upside_down_all_camera_mode = upsideDownCameraParamComboBox.SelectedItem.ToString()
                             }
                         };
                         string message = JsonSerializer.Serialize(operation);
 
                         sw.WriteLine(message);
 
-                        // µ¥«İPythonÀ³¥Îµ{¦¡¦^¶Ç°T®§
+                        // ç­‰å¾…Pythonæ‡‰ç”¨ç¨‹å¼å›å‚³è¨Šæ¯
                         string result = sr.ReadLine();
                         RecivedResult recivedResult = JsonSerializer.Deserialize<RecivedResult>(result);
 
                         while (recivedResult.Action != "openCamera")
                         {
-                            // ±µ¦¬¨Ó¦ÛPythonªº¸ê®Æ
+                            // æ¥æ”¶ä¾†è‡ªPythonçš„è³‡æ–™
                             result = sr.ReadLine();
                             recivedResult = JsonSerializer.Deserialize<RecivedResult>(result);
                         }
@@ -547,9 +550,9 @@ namespace WinFormsWithNamesPipe
                 {
                     if (!CheckPipeClientConnection())
                     {
-                        // ¦pªG¨S¦³³s±µ¡Aª½±µµ²§ô¦¹¤èªk
-                        // Åã¥Ü¿ù»~°T®§
-                        MessageBox.Show("NamedPipe ³s½u¥¢±Ñ", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        // å¦‚æœæ²’æœ‰é€£æ¥ï¼Œç›´æ¥çµæŸæ­¤æ–¹æ³•
+                        // é¡¯ç¤ºéŒ¯èª¤è¨Šæ¯
+                        MessageBox.Show("NamedPipe é€£ç·šå¤±æ•—", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                         return;
                     }
@@ -559,7 +562,7 @@ namespace WinFormsWithNamesPipe
                     {
                         sw.AutoFlush = true;
 
-                        // ±N¸ê®Æ²Õ¦¨json®æ¦¡
+                        // å°‡è³‡æ–™çµ„æˆjsonæ ¼å¼
                         // action: closeCamera
                         Operation operation = new Operation
                         {
@@ -570,13 +573,13 @@ namespace WinFormsWithNamesPipe
 
                         sw.WriteLine(message);
 
-                        // µ¥«İPythonÀ³¥Îµ{¦¡¦^¶Ç°T®§
+                        // ç­‰å¾…Pythonæ‡‰ç”¨ç¨‹å¼å›å‚³è¨Šæ¯
                         string result = sr.ReadLine();
                         RecivedResult recivedResult = JsonSerializer.Deserialize<RecivedResult>(result);
 
                         while (recivedResult.Action != "closeCamera")
                         {
-                            // ±µ¦¬¨Ó¦ÛPythonªº¸ê®Æ
+                            // æ¥æ”¶ä¾†è‡ªPythonçš„è³‡æ–™
                             result = sr.ReadLine();
                             recivedResult = JsonSerializer.Deserialize<RecivedResult>(result);
                         }
@@ -603,7 +606,7 @@ namespace WinFormsWithNamesPipe
             }
         }
 
-        // ¶}©l­i½¤¤ñ¹ï
+        // é–‹å§‹è™¹è†œæ¯”å°
         private void startCompareIrisBtn_Click(object sender, EventArgs e)
         {
             while (true)
@@ -613,9 +616,9 @@ namespace WinFormsWithNamesPipe
                 {
                     if (!CheckPipeClientConnection())
                     {
-                        // ¦pªG¨S¦³³s±µ¡Aª½±µµ²§ô¦¹¤èªk
-                        // Åã¥Ü¿ù»~°T®§
-                        MessageBox.Show("NamedPipe ³s½u¥¢±Ñ", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        // å¦‚æœæ²’æœ‰é€£æ¥ï¼Œç›´æ¥çµæŸæ­¤æ–¹æ³•
+                        // é¡¯ç¤ºéŒ¯èª¤è¨Šæ¯
+                        MessageBox.Show("NamedPipe é€£ç·šå¤±æ•—", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                         return;
                     }
@@ -625,7 +628,7 @@ namespace WinFormsWithNamesPipe
                     {
                         sw.AutoFlush = true;
 
-                        // ±N¸ê®Æ²Õ¦¨json®æ¦¡
+                        // å°‡è³‡æ–™çµ„æˆjsonæ ¼å¼
                         Operation operation = new Operation
                         {
                             Action = "startCompareIris",
@@ -644,13 +647,13 @@ namespace WinFormsWithNamesPipe
 
                         sw.WriteLine(message);
 
-                        // ±µ¦¬¨Ó¦ÛPythonªº¸ê®Æ
+                        // æ¥æ”¶ä¾†è‡ªPythonçš„è³‡æ–™
                         string result = sr.ReadLine();
                         RecivedResult recivedResult = JsonSerializer.Deserialize<RecivedResult>(result);
 
                         while (recivedResult.Action != "startCompareIris")
                         {
-                            // ±µ¦¬¨Ó¦ÛPythonªº¸ê®Æ
+                            // æ¥æ”¶ä¾†è‡ªPythonçš„è³‡æ–™
                             result = sr.ReadLine();
                             recivedResult = JsonSerializer.Deserialize<RecivedResult>(result);
                         }
@@ -661,7 +664,7 @@ namespace WinFormsWithNamesPipe
                         }
                         else
                         {
-                            // ¼ÒÀÀ¶}©l¤ñ¹ï¡A½Õ¾ã«ö¶sª¬ºA
+                            // æ¨¡æ“¬é–‹å§‹æ¯”å°ï¼Œèª¿æ•´æŒ‰éˆ•ç‹€æ…‹
                             // disabled button
                             startBuildIrisBtn.Enabled = false;
                             stopBuildIrisBtn.Enabled = false;
@@ -670,10 +673,10 @@ namespace WinFormsWithNamesPipe
                             // enabled button
                             stopCompareIrisBtn.Enabled = true;
 
-                            // §ó·sUI
-                            systemMsg.Text = "¶}©l¤ñ¹ï";
+                            // æ›´æ–°UI
+                            systemMsg.Text = "é–‹å§‹æ¯”å°";
 
-                            // ­«¸m¤ñ¹ïµ²ªG­I´º¦â
+                            // é‡ç½®æ¯”å°çµæœèƒŒæ™¯è‰²
                             compareResult.BackColor = SystemColors.MenuBar;
                         }
                     }
@@ -694,7 +697,7 @@ namespace WinFormsWithNamesPipe
             }
         }
 
-        // °±¤î­i½¤¤ñ¹ï
+        // åœæ­¢è™¹è†œæ¯”å°
         private void stopCompareIrisBtn_Click(object sender, EventArgs e)
         {
             while (true)
@@ -704,9 +707,9 @@ namespace WinFormsWithNamesPipe
                 {
                     if (!CheckPipeClientConnection())
                     {
-                        // ¦pªG¨S¦³³s±µ¡Aª½±µµ²§ô¦¹¤èªk
-                        // Åã¥Ü¿ù»~°T®§
-                        MessageBox.Show("NamedPipe ³s½u¥¢±Ñ", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        // å¦‚æœæ²’æœ‰é€£æ¥ï¼Œç›´æ¥çµæŸæ­¤æ–¹æ³•
+                        // é¡¯ç¤ºéŒ¯èª¤è¨Šæ¯
+                        MessageBox.Show("NamedPipe é€£ç·šå¤±æ•—", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                         return;
                     }
@@ -716,7 +719,7 @@ namespace WinFormsWithNamesPipe
                     {
                         sw.AutoFlush = true;
 
-                        // ±N¸ê®Æ²Õ¦¨json®æ¦¡
+                        // å°‡è³‡æ–™çµ„æˆjsonæ ¼å¼
                         Operation operation = new Operation
                         {
                             Action = "stopCompareIris",
@@ -726,13 +729,13 @@ namespace WinFormsWithNamesPipe
 
                         sw.WriteLine(message);
 
-                        // ±µ¦¬¨Ó¦ÛPythonªº¸ê®Æ
+                        // æ¥æ”¶ä¾†è‡ªPythonçš„è³‡æ–™
                         string result = sr.ReadLine();
                         RecivedResult recivedResult = JsonSerializer.Deserialize<RecivedResult>(result);
 
                         while (recivedResult.Action != "stopCompareIris")
                         {
-                            // ±µ¦¬¨Ó¦ÛPythonªº¸ê®Æ
+                            // æ¥æ”¶ä¾†è‡ªPythonçš„è³‡æ–™
                             result = sr.ReadLine();
                             recivedResult = JsonSerializer.Deserialize<RecivedResult>(result);
                         }
@@ -743,7 +746,7 @@ namespace WinFormsWithNamesPipe
                         }
                         else
                         {
-                            // ¼ÒÀÀ¤¤Â_¤ñ¹ï¡A½Õ¾ã«ö¶sª¬ºA
+                            // æ¨¡æ“¬ä¸­æ–·æ¯”å°ï¼Œèª¿æ•´æŒ‰éˆ•ç‹€æ…‹
                             // disabled button
                             stopBuildIrisBtn.Enabled = false;
                             stopCompareIrisBtn.Enabled = false;
@@ -752,8 +755,8 @@ namespace WinFormsWithNamesPipe
                             startBuildIrisBtn.Enabled = true;
                             startCompareIrisBtn.Enabled = true;
 
-                            // §ó·sUI
-                            systemMsg.Text = "¤¤Â_¤ñ¹ï";
+                            // æ›´æ–°UI
+                            systemMsg.Text = "ä¸­æ–·æ¯”å°";
                         }
                     }
                 }
@@ -782,9 +785,9 @@ namespace WinFormsWithNamesPipe
                 {
                     if (!CheckPipeClientConnection())
                     {
-                        // ¦pªG¨S¦³³s±µ¡Aª½±µµ²§ô¦¹¤èªk
-                        // Åã¥Ü¿ù»~°T®§
-                        MessageBox.Show("NamedPipe ³s½u¥¢±Ñ", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        // å¦‚æœæ²’æœ‰é€£æ¥ï¼Œç›´æ¥çµæŸæ­¤æ–¹æ³•
+                        // é¡¯ç¤ºéŒ¯èª¤è¨Šæ¯
+                        MessageBox.Show("NamedPipe é€£ç·šå¤±æ•—", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                         return;
                     }
@@ -794,7 +797,7 @@ namespace WinFormsWithNamesPipe
                     {
                         sw.AutoFlush = true;
 
-                        // ±N¸ê®Æ²Õ¦¨json®æ¦¡
+                        // å°‡è³‡æ–™çµ„æˆjsonæ ¼å¼
                         // action: setFocusCamera
                         Operation operation = new Operation
                         {
@@ -808,13 +811,13 @@ namespace WinFormsWithNamesPipe
 
                         sw.WriteLine(message);
 
-                        // µ¥«İPythonÀ³¥Îµ{¦¡¦^¶Ç°T®§
+                        // ç­‰å¾…Pythonæ‡‰ç”¨ç¨‹å¼å›å‚³è¨Šæ¯
                         string result = sr.ReadLine();
                         RecivedResult recivedResult = JsonSerializer.Deserialize<RecivedResult>(result);
 
                         while (recivedResult.Action != "setCompareFocusCamera")
                         {
-                            // ±µ¦¬¨Ó¦ÛPythonªº¸ê®Æ
+                            // æ¥æ”¶ä¾†è‡ªPythonçš„è³‡æ–™
                             result = sr.ReadLine();
                             recivedResult = JsonSerializer.Deserialize<RecivedResult>(result);
                         }
@@ -850,9 +853,9 @@ namespace WinFormsWithNamesPipe
                 {
                     if (!CheckPipeClientConnection())
                     {
-                        // ¦pªG¨S¦³³s±µ¡Aª½±µµ²§ô¦¹¤èªk
-                        // Åã¥Ü¿ù»~°T®§
-                        MessageBox.Show("NamedPipe ³s½u¥¢±Ñ", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        // å¦‚æœæ²’æœ‰é€£æ¥ï¼Œç›´æ¥çµæŸæ­¤æ–¹æ³•
+                        // é¡¯ç¤ºéŒ¯èª¤è¨Šæ¯
+                        MessageBox.Show("NamedPipe é€£ç·šå¤±æ•—", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                         return;
                     }
@@ -862,7 +865,7 @@ namespace WinFormsWithNamesPipe
                     {
                         sw.AutoFlush = true;
 
-                        // ±N¸ê®Æ²Õ¦¨json®æ¦¡
+                        // å°‡è³‡æ–™çµ„æˆjsonæ ¼å¼
                         // action: setFocusCamera
                         Operation operation = new Operation
                         {
@@ -876,13 +879,13 @@ namespace WinFormsWithNamesPipe
 
                         sw.WriteLine(message);
 
-                        // µ¥«İPythonÀ³¥Îµ{¦¡¦^¶Ç°T®§
+                        // ç­‰å¾…Pythonæ‡‰ç”¨ç¨‹å¼å›å‚³è¨Šæ¯
                         string result = sr.ReadLine();
                         RecivedResult recivedResult = JsonSerializer.Deserialize<RecivedResult>(result);
 
                         while (recivedResult.Action != "setCompareFocusCamera")
                         {
-                            // ±µ¦¬¨Ó¦ÛPythonªº¸ê®Æ
+                            // æ¥æ”¶ä¾†è‡ªPythonçš„è³‡æ–™
                             result = sr.ReadLine();
                             recivedResult = JsonSerializer.Deserialize<RecivedResult>(result);
                         }
@@ -911,8 +914,12 @@ namespace WinFormsWithNamesPipe
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            // ±NopenCameraParamComboBox ¹w³]­È³]¬° "disable"
+            // å°‡openCameraParamComboBox é è¨­å€¼è¨­ç‚º "disable"
             openCameraParamComboBox.SelectedIndex = 0;
+            // å°‡upsideDownCameraParamComboBox é è¨­å€¼è¨­ç‚º "ignore"
+            upsideDownCameraParamComboBox.SelectedIndex = 0;
+            // å°‡hintPreferenceComboBox é è¨­å€¼è¨­ç‚º "all"
+            hintPreferenceComboBox.SelectedIndex = 0;
         }
 
         private void flipLeftCameraBtn_Click(object sender, EventArgs e)
@@ -924,9 +931,9 @@ namespace WinFormsWithNamesPipe
                 {
                     if (!CheckPipeClientConnection())
                     {
-                        // ¦pªG¨S¦³³s±µ¡Aª½±µµ²§ô¦¹¤èªk
-                        // Åã¥Ü¿ù»~°T®§
-                        MessageBox.Show("NamedPipe ³s½u¥¢±Ñ", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        // å¦‚æœæ²’æœ‰é€£æ¥ï¼Œç›´æ¥çµæŸæ­¤æ–¹æ³•
+                        // é¡¯ç¤ºéŒ¯èª¤è¨Šæ¯
+                        MessageBox.Show("NamedPipe é€£ç·šå¤±æ•—", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                         return;
                     }
@@ -936,8 +943,8 @@ namespace WinFormsWithNamesPipe
                     {
                         sw.AutoFlush = true;
 
-                        // ±N¸ê®Æ²Õ¦¨json®æ¦¡
-                        // action: setFocusCamera
+                        // å°‡è³‡æ–™çµ„æˆjsonæ ¼å¼
+                        // action: flipCamera
                         Operation operation = new Operation
                         {
                             Action = "flipCamera",
@@ -950,13 +957,13 @@ namespace WinFormsWithNamesPipe
 
                         sw.WriteLine(message);
 
-                        // µ¥«İPythonÀ³¥Îµ{¦¡¦^¶Ç°T®§
+                        // ç­‰å¾…Pythonæ‡‰ç”¨ç¨‹å¼å›å‚³è¨Šæ¯
                         string result = sr.ReadLine();
                         RecivedResult recivedResult = JsonSerializer.Deserialize<RecivedResult>(result);
 
                         while (recivedResult.Action != "flipCamera")
                         {
-                            // ±µ¦¬¨Ó¦ÛPythonªº¸ê®Æ
+                            // æ¥æ”¶ä¾†è‡ªPythonçš„è³‡æ–™
                             result = sr.ReadLine();
                             recivedResult = JsonSerializer.Deserialize<RecivedResult>(result);
                         }
@@ -992,9 +999,9 @@ namespace WinFormsWithNamesPipe
                 {
                     if (!CheckPipeClientConnection())
                     {
-                        // ¦pªG¨S¦³³s±µ¡Aª½±µµ²§ô¦¹¤èªk
-                        // Åã¥Ü¿ù»~°T®§
-                        MessageBox.Show("NamedPipe ³s½u¥¢±Ñ", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        // å¦‚æœæ²’æœ‰é€£æ¥ï¼Œç›´æ¥çµæŸæ­¤æ–¹æ³•
+                        // é¡¯ç¤ºéŒ¯èª¤è¨Šæ¯
+                        MessageBox.Show("NamedPipe é€£ç·šå¤±æ•—", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                         return;
                     }
@@ -1004,7 +1011,7 @@ namespace WinFormsWithNamesPipe
                     {
                         sw.AutoFlush = true;
 
-                        // ±N¸ê®Æ²Õ¦¨json®æ¦¡
+                        // å°‡è³‡æ–™çµ„æˆjsonæ ¼å¼
                         // action: flipCamera
                         Operation operation = new Operation
                         {
@@ -1018,13 +1025,149 @@ namespace WinFormsWithNamesPipe
 
                         sw.WriteLine(message);
 
-                        // µ¥«İPythonÀ³¥Îµ{¦¡¦^¶Ç°T®§
+                        // ç­‰å¾…Pythonæ‡‰ç”¨ç¨‹å¼å›å‚³è¨Šæ¯
                         string result = sr.ReadLine();
                         RecivedResult recivedResult = JsonSerializer.Deserialize<RecivedResult>(result);
 
                         while (recivedResult.Action != "flipCamera")
                         {
-                            // ±µ¦¬¨Ó¦ÛPythonªº¸ê®Æ
+                            // æ¥æ”¶ä¾†è‡ªPythonçš„è³‡æ–™
+                            result = sr.ReadLine();
+                            recivedResult = JsonSerializer.Deserialize<RecivedResult>(result);
+                        }
+
+                        if (recivedResult.Status == "error")
+                        {
+                            MessageBox.Show(recivedResult.Message, recivedResult.Status, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
+                }
+                catch (IOException ex)
+                {
+                    needRetry = true;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+
+                if (!needRetry)
+                {
+                    break;
+                }
+            }
+        }
+
+        private void upsideDownLeftCameraBtn_Click(object sender, EventArgs e)
+        {
+            while (true)
+            {
+                needRetry = false;
+                try
+                {
+                    if (!CheckPipeClientConnection())
+                    {
+                        // å¦‚æœæ²’æœ‰é€£æ¥ï¼Œç›´æ¥çµæŸæ­¤æ–¹æ³•
+                        // é¡¯ç¤ºéŒ¯èª¤è¨Šæ¯
+                        MessageBox.Show("NamedPipe é€£ç·šå¤±æ•—", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                        return;
+                    }
+
+                    using (StreamWriter sw = new StreamWriter(pipeClient, Encoding.UTF8, -1, leaveOpen: true))
+                    using (StreamReader sr = new StreamReader(pipeClient, Encoding.UTF8, true, -1, leaveOpen: true))
+                    {
+                        sw.AutoFlush = true;
+
+                        // å°‡è³‡æ–™çµ„æˆjsonæ ¼å¼
+                        // action: upsideDownCamera
+                        Operation operation = new Operation
+                        {
+                            Action = "upsideDownCamera",
+                            Data = new
+                            {
+                                camera_src = "left"
+                            }
+                        };
+                        string message = JsonSerializer.Serialize(operation);
+
+                        sw.WriteLine(message);
+
+                        // ç­‰å¾…Pythonæ‡‰ç”¨ç¨‹å¼å›å‚³è¨Šæ¯
+                        string result = sr.ReadLine();
+                        RecivedResult recivedResult = JsonSerializer.Deserialize<RecivedResult>(result);
+
+                        while (recivedResult.Action != "upsideDownCamera")
+                        {
+                            // æ¥æ”¶ä¾†è‡ªPythonçš„è³‡æ–™
+                            result = sr.ReadLine();
+                            recivedResult = JsonSerializer.Deserialize<RecivedResult>(result);
+                        }
+
+                        if (recivedResult.Status == "error")
+                        {
+                            MessageBox.Show(recivedResult.Message, recivedResult.Status, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
+                }
+                catch (IOException ex)
+                {
+                    needRetry = true;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+
+                if (!needRetry)
+                {
+                    break;
+                }
+            }
+        }
+
+        private void upsideDownRightCameraBtn_Click(object sender, EventArgs e)
+        {
+            while (true)
+            {
+                needRetry = false;
+                try
+                {
+                    if (!CheckPipeClientConnection())
+                    {
+                        // å¦‚æœæ²’æœ‰é€£æ¥ï¼Œç›´æ¥çµæŸæ­¤æ–¹æ³•
+                        // é¡¯ç¤ºéŒ¯èª¤è¨Šæ¯
+                        MessageBox.Show("NamedPipe é€£ç·šå¤±æ•—", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                        return;
+                    }
+
+                    using (StreamWriter sw = new StreamWriter(pipeClient, Encoding.UTF8, -1, leaveOpen: true))
+                    using (StreamReader sr = new StreamReader(pipeClient, Encoding.UTF8, true, -1, leaveOpen: true))
+                    {
+                        sw.AutoFlush = true;
+
+                        // å°‡è³‡æ–™çµ„æˆjsonæ ¼å¼
+                        // action: upsideDownCamera
+                        Operation operation = new Operation
+                        {
+                            Action = "upsideDownCamera",
+                            Data = new
+                            {
+                                camera_src = "right"
+                            }
+                        };
+                        string message = JsonSerializer.Serialize(operation);
+
+                        sw.WriteLine(message);
+
+                        // ç­‰å¾…Pythonæ‡‰ç”¨ç¨‹å¼å›å‚³è¨Šæ¯
+                        string result = sr.ReadLine();
+                        RecivedResult recivedResult = JsonSerializer.Deserialize<RecivedResult>(result);
+
+                        while (recivedResult.Action != "upsideDownCamera")
+                        {
+                            // æ¥æ”¶ä¾†è‡ªPythonçš„è³‡æ–™
                             result = sr.ReadLine();
                             recivedResult = JsonSerializer.Deserialize<RecivedResult>(result);
                         }
@@ -1060,9 +1203,9 @@ namespace WinFormsWithNamesPipe
                 {
                     if (!CheckPipeClientConnection())
                     {
-                        // ¦pªG¨S¦³³s±µ¡Aª½±µµ²§ô¦¹¤èªk
-                        // Åã¥Ü¿ù»~°T®§
-                        MessageBox.Show("NamedPipe ³s½u¥¢±Ñ", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        // å¦‚æœæ²’æœ‰é€£æ¥ï¼Œç›´æ¥çµæŸæ­¤æ–¹æ³•
+                        // é¡¯ç¤ºéŒ¯èª¤è¨Šæ¯
+                        MessageBox.Show("NamedPipe é€£ç·šå¤±æ•—", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                         return;
                     }
@@ -1072,7 +1215,7 @@ namespace WinFormsWithNamesPipe
                     {
                         sw.AutoFlush = true;
 
-                        // ±N¸ê®Æ²Õ¦¨json®æ¦¡
+                        // å°‡è³‡æ–™çµ„æˆjsonæ ¼å¼
                         // action: reloadEnvSettings
                         Operation operation = new Operation
                         {
@@ -1083,13 +1226,13 @@ namespace WinFormsWithNamesPipe
 
                         sw.WriteLine(message);
 
-                        // µ¥«İPythonÀ³¥Îµ{¦¡¦^¶Ç°T®§
+                        // ç­‰å¾…Pythonæ‡‰ç”¨ç¨‹å¼å›å‚³è¨Šæ¯
                         string result = sr.ReadLine();
                         RecivedResult recivedResult = JsonSerializer.Deserialize<RecivedResult>(result);
 
                         while (recivedResult.Action != "reloadEnvSettings")
                         {
-                            // ±µ¦¬¨Ó¦ÛPythonªº¸ê®Æ
+                            // æ¥æ”¶ä¾†è‡ªPythonçš„è³‡æ–™
                             result = sr.ReadLine();
                             recivedResult = JsonSerializer.Deserialize<RecivedResult>(result);
                         }
@@ -1125,9 +1268,9 @@ namespace WinFormsWithNamesPipe
                 {
                     if (!CheckPipeClientConnection())
                     {
-                        // ¦pªG¨S¦³³s±µ¡Aª½±µµ²§ô¦¹¤èªk
-                        // Åã¥Ü¿ù»~°T®§
-                        MessageBox.Show("NamedPipe ³s½u¥¢±Ñ", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        // å¦‚æœæ²’æœ‰é€£æ¥ï¼Œç›´æ¥çµæŸæ­¤æ–¹æ³•
+                        // é¡¯ç¤ºéŒ¯èª¤è¨Šæ¯
+                        MessageBox.Show("NamedPipe é€£ç·šå¤±æ•—", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                         return;
                     }
@@ -1137,7 +1280,7 @@ namespace WinFormsWithNamesPipe
                     {
                         sw.AutoFlush = true;
 
-                        // ±N¸ê®Æ²Õ¦¨json®æ¦¡
+                        // å°‡è³‡æ–™çµ„æˆjsonæ ¼å¼
                         // action: setUseNewMethod
                         Operation operation = new Operation
                         {
@@ -1148,13 +1291,81 @@ namespace WinFormsWithNamesPipe
 
                         sw.WriteLine(message);
 
-                        // µ¥«İPythonÀ³¥Îµ{¦¡¦^¶Ç°T®§
+                        // ç­‰å¾…Pythonæ‡‰ç”¨ç¨‹å¼å›å‚³è¨Šæ¯
                         string result = sr.ReadLine();
                         RecivedResult recivedResult = JsonSerializer.Deserialize<RecivedResult>(result);
 
                         while (recivedResult.Action != "setUseNewMethod")
                         {
-                            // ±µ¦¬¨Ó¦ÛPythonªº¸ê®Æ
+                            // æ¥æ”¶ä¾†è‡ªPythonçš„è³‡æ–™
+                            result = sr.ReadLine();
+                            recivedResult = JsonSerializer.Deserialize<RecivedResult>(result);
+                        }
+
+                        if (recivedResult.Status == "error")
+                        {
+                            MessageBox.Show(recivedResult.Message, recivedResult.Status, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
+                }
+                catch (IOException ex)
+                {
+                    needRetry = true;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+
+                if (!needRetry)
+                {
+                    break;
+                }
+            }
+        }
+
+        private void saveHintPreference_Click(object sender, EventArgs e)
+        {
+            while (true)
+            {
+                needRetry = false;
+                try
+                {
+                    if (!CheckPipeClientConnection())
+                    {
+                        // å¦‚æœæ²’æœ‰é€£æ¥ï¼Œç›´æ¥çµæŸæ­¤æ–¹æ³•
+                        // é¡¯ç¤ºéŒ¯èª¤è¨Šæ¯
+                        MessageBox.Show("NamedPipe é€£ç·šå¤±æ•—", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                        return;
+                    }
+
+                    using (StreamWriter sw = new StreamWriter(pipeClient, Encoding.UTF8, -1, leaveOpen: true))
+                    using (StreamReader sr = new StreamReader(pipeClient, Encoding.UTF8, true, -1, leaveOpen: true))
+                    {
+                        sw.AutoFlush = true;
+
+                        // å°‡è³‡æ–™çµ„æˆjsonæ ¼å¼
+                        // action: saveHintPerence
+                        Operation operation = new Operation
+                        {
+                            Action = "saveHintPreference",
+                            Data = new {
+                                camera_src = hintPreferenceComboBox.SelectedItem.ToString(),
+                                show_hint = false
+                            }
+                        };
+                        string message = JsonSerializer.Serialize(operation);
+
+                        sw.WriteLine(message);
+
+                        // ç­‰å¾…Pythonæ‡‰ç”¨ç¨‹å¼å›å‚³è¨Šæ¯
+                        string result = sr.ReadLine();
+                        RecivedResult recivedResult = JsonSerializer.Deserialize<RecivedResult>(result);
+
+                        while (recivedResult.Action != "saveHintPreference")
+                        {
+                            // æ¥æ”¶ä¾†è‡ªPythonçš„è³‡æ–™
                             result = sr.ReadLine();
                             recivedResult = JsonSerializer.Deserialize<RecivedResult>(result);
                         }

@@ -666,15 +666,27 @@
 </tr>
 <tr>
 <td><code>openCamera</code></td>
-<td><code>single_camera_mode</code>: <strong>選擇採用的單鏡頭模式</strong>，可針對緊急情況下調整到單鏡頭模式<br> 限制只能傳入<strong>left</strong>, <strong>right</strong>，和<strong>disable</strong> 這三個<strong>string</strong>字串，預設數值<strong>disable</strong> <br><br> <strong>disable</strong>: 一般雙鏡頭模式 <br> <strong>left</strong>, <strong>right</strong>: 只開啟左或右側的鏡頭</td>
+<td><code>single_camera_mode</code>: <strong>選擇採用的單鏡頭模式</strong>，可針對緊急情況下調整到單鏡頭模式<br> 限制只能傳入<strong>left</strong>, <strong>right</strong>，和<strong>disable</strong> 這三個<strong>string</strong>字串，預設數值<strong>disable</strong> <br><br> <strong>disable</strong>: 一般雙鏡頭模式 <br> <strong>left</strong>, <strong>right</strong>: 只開啟左或右側的鏡頭 <br><br>  <code>upside_down_all_camera_mode</code>: <strong>是否要將全部的鏡頭都上下翻轉</strong>，要求系統將全部的鏡頭皆上下翻轉<br> 限制只能傳入<strong>enable</strong>, <strong>disable</strong>, <strong>ignore</strong>這三個<strong>string</strong>字串，預設數值<strong>ignore</strong><br><br> <strong>enable</strong> 將全部鏡頭上下翻轉，<strong>disable</strong>將全部鏡頭取消上下翻轉，<strong>ignore</strong>保留目前的鏡頭設定不做更改<br></td>
 </tr>
 <tr>
 <td><code>flipCamera</code></td>
-<td><code>camera_src</code>: <strong>要指定的camera來源</strong>，要求系統去翻轉的鏡頭目標<br> 限制只能傳入<strong>left</strong>, <strong>right</strong> 限制為<strong>string</strong>型態的字串，<font color='#f76560'><strong>必填</strong></td>
+<td><code>camera_src</code>: <strong>要指定的camera來源</strong>，要求系統去左右翻轉的鏡頭目標<br> 限制只能傳入<strong>left</strong>, <strong>right</strong> 限制為<strong>string</strong>型態的字串，<font color='#f76560'><strong>必填</strong></td>
+</tr>
+<tr>
+<td><code>upsideDownCamera</code></td>
+<td><code>camera_src</code>: <strong>要指定的camera來源</strong>，要求系統去上下翻轉的鏡頭目標<br> 限制只能傳入<strong>left</strong>, <strong>right</strong> 限制為<strong>string</strong>型態的字串，<font color='#f76560'><strong>必填</strong></td>
 </tr>
 <tr>
 <td><code>closeProgressbar</code></td>
 <td><code>camera_src</code>: <strong>要指定的camera來源</strong>，要求系統去關閉哪個鏡頭底下的進度條<br> 限制只能傳入<strong>left</strong>, <strong>right</strong>, <strong>all</strong> 這三個<strong>string</strong>字串，預設數值<strong>all</strong></td>
+</tr>
+<tr>
+<td><code>saveProgressBarPreference</code></td>
+<td><code>camera_src</code>: <strong>要指定的camera來源</strong>，要求系統去針對哪個鏡頭底下的進度條做設定<br> 限制只能傳入<strong>left</strong>, <strong>right</strong>, <strong>all</strong> 這三個<strong>string</strong>字串，<font color='#f76560'><strong>必填</strong></font><br> <code>show_progressbar</code>: <strong>是否要顯示</strong>，限制為<strong>boolean</strong>型態的數值，<font color='#f76560'><strong>必填</strong></font></td>
+</tr>
+<tr>
+<td><code>saveHintPreference</code></td>
+<td><code>camera_src</code>: <strong>要指定的camera來源</strong>，要求系統去針對哪個鏡頭底的提示遮罩做設定<br> 限制只能傳入<strong>left</strong>, <strong>right</strong>, <strong>all</strong> 這三個<strong>string</strong>字串，<font color='#f76560'><strong>必填</strong></font><br> <code>show_hint</code>: <strong>是否要顯示</strong>，限制為<strong>boolean</strong>型態的數值，<font color='#f76560'><strong>必填</strong></font></td>
 </tr>
 <tr>
 <td><code>startBuildIris</code></td>
